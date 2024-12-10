@@ -1,4 +1,4 @@
-grammar Expr;
+grammar scheme;
 
 root : instru* EOF ;
 

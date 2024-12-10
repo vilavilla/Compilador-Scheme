@@ -1,8 +1,8 @@
 import sys
 from antlr4 import *
-from ExprLexer import ExprLexer
-from ExprParser import ExprParser
-from ExprVisitor import ExprVisitor
+from SchemeLexer import SchemeLexer
+from SchemeParser import SchemeParser
+from SchemeVisitor import SchemeVisitor
 from antlr4.error.ErrorListener import ErrorListener
 
 class SchemeErrorListener(ErrorListener):
@@ -13,7 +13,7 @@ class SchemeErrorListener(ErrorListener):
         print(f"Error sintáctico en la línea {line}, columna {column}: {msg}")
         sys.exit(1)
 
-class SchemeInterpreter(ExprVisitor):
+class SchemeInterpreter(SchemeVisitor):
     def __init__(self):
         self.global_env = {}
 
@@ -85,9 +85,9 @@ class SchemeInterpreter(ExprVisitor):
 # Manejo de entrada y salida
 def main(argv):
     input_stream = FileStream(argv[1])
-    lexer = ExprLexer(input_stream)
+    lexer = SchemeLexer(input_stream)
     stream = CommonTokenStream(lexer)
-    parser = ExprParser(stream)
+    parser = SchemeParser(stream)
     parser.addErrorListener(SchemeErrorListener())
     tree = parser.root()
     interpreter = SchemeInterpreter()
