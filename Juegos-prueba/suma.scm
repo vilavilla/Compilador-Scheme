@@ -1,4 +1,5 @@
 (define (suma x y)
   (+ x y))
 
-(suma 3 4)
+(display (suma 5 8))
+(newline)

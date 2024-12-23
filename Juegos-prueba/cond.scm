@@ -1,9 +1,8 @@
-(define (valor-absolut x)
+(define (parimpar x)
   (cond
-    ((> x 0) x)
-    ((< x 0) (- x))
-    (#t 0)))
+    ((= (mod x 2) 0) "par")
+    ((= (mod x 2) 1) "impar")
+    (#t "desconocido")))
 
-(valor-absolut -5)
-(valor-absolut 5)
-(valor-absolut 0)
+(display (parimpar 7))
+(newline)

@@ -1,0 +1,60 @@
+DEBUG: Leyendo archivo 'prueba.scm'...
+DEBUG: Iniciando procesamiento de entrada...
+DEBUG: Texto de entrada recibido:
+DEBUG: Lexer inicializado.
+DEBUG: TokenStream generado.
+DEBUG: Parser inicializado.
+DEBUG: Árbol AST generado:
+(root (declaration ( define ( es-divisible x y ) (block (stmt (expr ( = (expr ( mod (expr x) (expr y) )) (expr 0) )))) )) (declaration ( define ( primo-rec n x ) (block (stmt (expr ( if (expr ( > (expr ( * (expr x) (expr x) )) (expr n) )) (expr #t) (expr ( if (expr ( (expr es-divisible (expr n) (expr x)) )) (expr #f) (expr ( (expr primo-rec (expr n) (expr ( + (expr x) (expr 1) ))) )) )) )))) )) (declaration ( define ( es-primo n ) (block (stmt (expr ( if (expr ( < (expr n) (expr 2) )) (expr #f) (expr ( (expr primo-rec (expr n) (expr 2)) )) )))) )) (expr ( display (expr ( (expr es-primo (expr 2)) )) )) (expr ( newline )) (expr ( display (expr ( (expr es-primo (expr 4)) )) )) (expr ( newline )) (expr ( display (expr ( (expr es-primo (expr 17)) )) )) (expr ( newline )) <EOF>)
+DEBUG: Visitador inicializado.
+DEBUG: Visitando nodo: RootContext, texto: (define(es-divisiblexy)(=(modxy)0))(define(primo-recnx)(if(>(*xx)n)#t(if(es-divisiblenx)#f(primo-recn(+x1)))))(define(es-primon)(if(<n2)#f(primo-recn2)))(display(es-primo2))(newline)(display(es-primo4))(newline)(display(es-primo17))(newline)<EOF>
+DEBUG: visitRoot - Start
+DEBUG: visitRoot - Visiting child: (define(es-divisiblexy)(=(modxy)0))
+DEBUG: Visitando nodo: FunctionDeclarationContext, texto: (define(es-divisiblexy)(=(modxy)0))
+DEBUG: visitFunctionDeclaration - Function 'es-divisible' defined with params ['x', 'y'] and block (=(modxy)0)
+DEBUG: Nodo FunctionDeclarationContext evaluado con resultado: es-divisible
+DEBUG: visitRoot - Visiting child: (define(primo-recnx)(if(>(*xx)n)#t(if(es-divisiblenx)#f(primo-recn(+x1)))))
+DEBUG: Visitando nodo: FunctionDeclarationContext, texto: (define(primo-recnx)(if(>(*xx)n)#t(if(es-divisiblenx)#f(primo-recn(+x1)))))
+DEBUG: visitFunctionDeclaration - Function 'primo-rec' defined with params ['n', 'x'] and block (if(>(*xx)n)#t(if(es-divisiblenx)#f(primo-recn(+x1))))
+DEBUG: Nodo FunctionDeclarationContext evaluado con resultado: primo-rec
+DEBUG: visitRoot - Visiting child: (define(es-primon)(if(<n2)#f(primo-recn2)))
+DEBUG: Visitando nodo: FunctionDeclarationContext, texto: (define(es-primon)(if(<n2)#f(primo-recn2)))
+DEBUG: visitFunctionDeclaration - Function 'es-primo' defined with params ['n'] and block (if(<n2)#f(primo-recn2))
+DEBUG: Nodo FunctionDeclarationContext evaluado con resultado: es-primo
+DEBUG: visitRoot - Visiting child: (display(es-primo2))
+DEBUG: Visitando nodo: DisplayExprContext, texto: (display(es-primo2))
+DEBUG: visitDisplayExpr - Start, texto: (display(es-primo2))
+DEBUG: Visitando nodo: GroupExprContext, texto: (es-primo2)
+DEBUG: visitGroupExpr - Start, texto: (es-primo2)
+DEBUG: Visitando nodo: FunctionCallExprContext, texto: es-primo2
+DEBUG: Error capturado: not enough values to unpack (expected 3, got 2)
+DEBUG: Procesamiento completado.
+
+Resultados:
+IN: (define (es-divisible x y)
+  (= (mod x y) 0))
+
+(define (primo-rec n x)
+  (if (> (* x x) n)
+      #t
+      (if (es-divisible n x)
+          #f
+          (primo-rec n (+ x 1)))))
+
+(define (es-primo n)
+  (if (< n 2)
+      #f
+      (primo-rec n 2)))
+
+(display (es-primo 2)) ; Esperado: #t
+(newline)
+
+(display (es-primo 4)) ; Esperado: #f
+(newline)
+
+(display (es-primo 17)) ; Esperado: #t
+(newline) /// OUT: Error: not enough values to unpack (expected 3, got 2)
+Funciones definidas:
+es-divisible (x, y)
+primo-rec (n, x)
+es-primo (n)

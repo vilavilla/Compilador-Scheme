@@ -1,9 +1,10 @@
-(define (dobla x)
+(define (doble x)
   (* x 2))
 
-(define (map func llista)
-  (cond
-    ((null? llista) '())
-    (else (cons (func (car llista)) (map func (cdr llista))))))
+(define (mapear f lst)
+  (if (null? lst)
+      '()
+      (cons (f (car lst)) (mapear f (cdr lst)))))
 
-(map dobla '(1 2 3 4))
+(display (mapear doble '(1 2 3 4)))
+(newline)

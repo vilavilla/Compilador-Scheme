@@ -1,0 +1,16 @@
+(define (suma x y)
+    (+ x y))
+
+(define (maximo a b)
+    (if (> a b) a b))
+
+(define (main)
+    (display "Introduce dos números: ")
+    (let ((x (read))
+          (y (read)))
+        (display "La suma es: ")
+        (display (suma x y))
+        (newline)
+        (display "El máximo es: ")
+        (display (maximo x y))
+        (newline)))

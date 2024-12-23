@@ -1,97 +1,111 @@
-import sys
 from antlr4 import *
 from SchemeLexer import SchemeLexer
 from SchemeParser import SchemeParser
-from SchemeVisitor import SchemeVisitor
-from antlr4.error.ErrorListener import ErrorListener
+from EvalVisitor import EvalVisitor, FunctionTable, SymbolTable
+import sys
 
-class SchemeErrorListener(ErrorListener):
-    def __init__(self):
-        super(SchemeErrorListener, self).__init__()
+# Listas globales para almacenar resultados y funciones
+functions = []
+results = []
 
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        print(f"Error sintáctico en la línea {line}, columna {column}: {msg}")
+# Función auxiliar para formatear funciones
+def getFunx(tokens):
+    return " ".join(map(str, tokens))
+
+# Procesar la entrada Scheme
+def process_input(input_text):
+    try:
+        print("DEBUG: Iniciando procesamiento de entrada...")
+        print("DEBUG: Texto de entrada recibido:")
+
+        # Lexer, Parser y árbol de sintaxis
+        input_stream = InputStream(input_text)
+        lexer = SchemeLexer(input_stream)
+        print("DEBUG: Lexer inicializado.")
+
+        token_stream = CommonTokenStream(lexer)
+        print("DEBUG: TokenStream generado.")
+
+        parser = SchemeParser(token_stream)
+        print("DEBUG: Parser inicializado.")
+
+        tree = parser.root()  # Construye el árbol AST
+        print("DEBUG: Árbol AST generado:")
+        print(tree.toStringTree(recog=parser))  # Imprime el árbol de análisis sintáctico
+
+        # Visitador para evaluar el árbol
+        visitor = EvalVisitor()
+        print("DEBUG: Visitador inicializado.")
+        result = visitor.visit(tree)
+        print(f"DEBUG: Resultado de la evaluación inicial: {result}")
+
+        # Ejecutar 'main' si está definida
+        if 'main' in FunctionTable:
+            print("DEBUG: Ejecutando función 'main'...")
+            main_params, main_block = FunctionTable['main']
+            print(f"DEBUG: Parámetros de 'main': {main_params}")
+            print(f"DEBUG: Bloque de 'main': {main_block.getText()}")
+
+            SymbolTable.append({})  # Añadimos un nuevo scope vacío
+            result = visitor.visit(main_block)  # Ejecutar el bloque principal
+            SymbolTable.pop()       # Limpiamos el scope local
+
+            print(f"DEBUG: Resultado de 'main': {result}")
+        else:
+            print("DEBUG: No se encontró la función 'main'.")
+
+        # Gestión de resultados
+        if isinstance(result, int):
+            output = f"IN: {input_text.strip()} /// OUT: {result}"
+            results.append(output)
+            print(f"DEBUG: Resultado añadido a 'results': {output}")
+            if len(results) > 8:
+                results.pop(0)
+
+        elif isinstance(result, list):  # Si es una lista, probablemente funciones
+            functions.append(getFunx(result))
+            print(f"DEBUG: Función añadida a 'functions': {functions[-1]}")
+            if len(functions) > 8:
+                functions.pop(0)
+
+    except Exception as e:
+        output = f"IN: {input_text.strip()} /// OUT: Error: {str(e)}"
+        results.append(output)
+        print(f"DEBUG: Error capturado: {str(e)}")
+        if len(results) > 8:
+            results.pop(0)
+
+    return results, functions
+
+# Punto de entrada principal
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Uso: python3 Scheme.py <archivo_entrada.scm>")
         sys.exit(1)
 
-class SchemeInterpreter(SchemeVisitor):
-    def __init__(self):
-        self.global_env = {}
+    # Leer archivo de entrada
+    input_file = sys.argv[1]
+    try:
+        print(f"DEBUG: Leyendo archivo '{input_file}'...")
+        with open(input_file, "r") as file:
+            input_text = file.read()
 
-    def visitRoot(self, ctx):
-        return self.visitChildren(ctx)
+        # Procesar la entrada y mostrar resultados
+        results, funcs = process_input(input_text)
+        
+        print("DEBUG: Procesamiento completado.")
 
-    def visitFuncion(self, ctx):
-        func_name = str(ctx.VAR())
-        params = [str(var) for var in ctx.VAR()[1:]]
-        body = ctx.expr()
-        self.global_env[func_name] = (params, body)
-        return func_name
+        print("\nResultados:")
+        print("\n".join(results))
 
-    def visitConstante(self, ctx):
-        const_name = str(ctx.VAR())
-        value = self.visit(ctx.expr())
-        self.global_env[const_name] = value
-        return const_name
+        # Imprimir funciones definidas
+        print("Funciones definidas:")
+        for func, (params, _) in FunctionTable.items():
+            print(f"{func} ({', '.join(params)})")
 
-    def visitExpr(self, ctx):
-        if ctx.operacion_aritmetica():
-            return self.visitOperacion_aritmetica(ctx)
-        elif ctx.operacion_relacional():
-            return self.visitOperacion_relacional(ctx)
-        elif ctx.entrada():
-            return self.visitEntrada(ctx)
-        elif ctx.VAR():
-            return self.global_env.get(str(ctx.VAR()))
-        elif ctx.NUM():
-            return int(str(ctx.NUM()))
-        elif ctx.BOOLEAN():
-            return str(ctx.BOOLEAN()) == '#t'
-        else:
-            return self.visitChildren(ctx)
-
-    def visitOperacion_aritmetica(self, ctx):
-        op = str(ctx.operacion_aritmetica().getText())
-        left = self.visit(ctx.expr(0))
-        right = self.visit(ctx.expr(1))
-        if op == '+':
-            return left + right
-        elif op == '-':
-            return left - right
-        elif op == '*':
-            return left * right
-        elif op == '/':
-            return left / right
-
-    def visitOperacion_relacional(self, ctx):
-        op = str(ctx.operacion_relacional().getText())
-        left = self.visit(ctx.expr(0))
-        right = self.visit(ctx.expr(1))
-        if op == '>':
-            return left > right
-        elif op == '<':
-            return left < right
-        elif op == '>=':
-            return left >= right
-        elif op == '<=':
-            return left <= right
-        elif op == '=':
-            return left == right
-        elif op == '<>':
-            return left != right
-
-    def visitEntrada(self, ctx):
-        return int(input())
-
-# Manejo de entrada y salida
-def main(argv):
-    input_stream = FileStream(argv[1])
-    lexer = SchemeLexer(input_stream)
-    stream = CommonTokenStream(lexer)
-    parser = SchemeParser(stream)
-    parser.addErrorListener(SchemeErrorListener())
-    tree = parser.root()
-    interpreter = SchemeInterpreter()
-    interpreter.visit(tree)
-
-if __name__ == "__main__":
-    main(sys.argv)
+    except FileNotFoundError:
+        print(f"Error: No se encontró el archivo '{input_file}'")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error inesperado: {str(e)}")
+        sys.exit(1)

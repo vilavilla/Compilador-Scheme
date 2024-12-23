@@ -1,87 +1,93 @@
 grammar Scheme;
 
-root : instru* EOF ;
+root
+    : declaration* expr* EOF
+    ;
 
-instru: bucle
-      | ifcondition
-      | condition
-      | expr
-      | assignation
-      | imprimir
-      | funcion
-      | constante
-      | entrada
-      ;
+// Expressions
+expr
+    : '(' expr ')'                             #groupExpr
+    | ID                                       #variableExpr
+    | NUM                                      #numberExpr
+    | STRING                                   #stringExpr
+    | '#t'                                     #trueExpr
+    | '#f'                                     #falseExpr
+    | '(' (SUM | SUB | PROD | DIV | MOD | EXP) expr expr ')'  #arithmeticExpr
+    | '(' 'if' expr expr expr ')'              #ifExpr
+    | '(' 'cond' condClause+ ')'               #condExpr
+    | '(' 'let' '(' letBinding (letBinding)* ')' expr+ ')'   #letExpr
+    | '(' 'read' ')'                           #readExpr
+    | '(' 'display' expr ')'                   #displayExpr
+    | '(' 'newline' ')'                        #newlineExpr
+    | '(' (LESS | LESSEQ | GREATER | GREATEREQ | EQ | NOTEQ) expr expr ')' #comparisonExpr
+    | '(' (AND | OR | NOT) expr+ ')'           #logicalExpr
+    | '(' 'car' expr ')'                       #carExpr
+    | '(' 'cdr' expr ')'                       #cdrExpr
+    | '(' 'cons' expr expr ')'                 #consExpr
+    | '(' 'null?' expr ')'                     #nullExpr
+    | ID expr*                                 #functionCallExpr
+    | LIST                                     #listLiteralExpr
+    | EMPTY_LIST                               #emptyListExpr
+    ;
 
-funcion : '(define' '(' VAR (VAR)* ')' expr ')' ;
+// Let bindings
+letBinding
+    : '(' ID expr ')'                          #letBindingPair
+    ;
 
-constante : '(define' VAR expr ')' ;
+// Conditional clauses
+condClause
+    : '(' expr expr ')'                        #condClauseExpr
+    | '(' 'else' expr ')'                        #condElseClause
+    ;
 
-entrada : '(' 'read' ')' ;
+// Declarations
+declaration
+    : '(' 'define' ID expr ')'                 #constantDeclaration
+    | '(' 'define' '(' ID ID* ')' block ')'    #functionDeclaration
+    ;
 
-expr : '(' operacion_aritmetica (expr|VAR|NUM)* ')'
-     | '(' operacion_relacional (expr|VAR|NUM)* ')'
-     | '(' 'car' expr ')'
-     | '(' 'cdr' expr ')'
-     | '(' 'cons' expr expr ')'
-     | '(' 'null?' expr ')'
-     | '(' 'quote' lista ')'
-     | '(' 'display' expr ')'
-     | '(' 'newline' ')'
-     | '(' 'and' expr (expr)* ')'
-     | '(' 'or' expr (expr)* ')'
-     | '(' 'not' expr ')'
-     | '(' VAR (expr|VAR|NUM)* ')'  // Para funciones de orden superior y llamadas a funciones
-     | if_expr
-     | cond_expr
-     | let_expr
-     | VAR
-     | NUM
-     | BOOLEAN
-     ;
+// Blocks
+block
+    : stmt*
+    ;
 
-operacion_aritmetica: '+'  // Operadores aritméticos
-                    | '-'
-                    | '*'
-                    | '/'
-                    ;
+// Statements
+stmt
+    : expr                                      #expressionStmt
+    | '(' 'define' ID expr ')'                  #assignmentStmt
+    | '(' 'if' expr block ')'                   #ifStmt
+    | '(' 'if' expr block 'else' block ')'      #ifElseStmt
+    ;
 
-operacion_relacional: '>'
-                    | '<'
-                    | '>='
-                    | '<='
-                    | '='
-                    | '<>'
-                    ;
+// Operators
+SUM     : '+';
+SUB     : '-';
+PROD    : '*';
+DIV     : '/';
+MOD     : 'mod';
+EXP     : '^';
+NOTEQ   : '!=';
+LESSEQ  : '<=';
+GREATEREQ: '>=' ;
+LESS    : '<';
+GREATER : '>';
+EQ      : '=';
+AND     : '&&';
+OR      : '||';
+NOT     : '!';
 
-bucle : '(while' condition instru* ')' ;
+// List literals
+LIST : '\'' '(' (NUM | ID | STRING) (WS (NUM | ID | STRING))* ')';
+EMPTY_LIST : '\'' '()';
 
-assignation : '(set!' VAR expr ')' ;
+// Strings
+STRING  : '"' (~["\\] | '\\' .)* '"';
 
-imprimir : '(' 'write' expr ')' ;
+// Identifiers and numbers
+ID : [a-zA-Z][a-zA-Z0-9_-]*;
+NUM         : [0-9]+;
 
-condition : '(' expr operacion_relacional expr ')' ;
-
-ifcondition: if_expr ;
-
-if_expr : '(if' condition expr expr ')' ;
-
-cond_expr : '(cond' cond_clause+ ')' ;
-
-cond_clause : '(' condition expr ')' 
-            | '(' '#t' expr ')' 
-            ;
-
-let_expr : '(let' '(' let_binding+ ')' expr ')' ;
-
-let_binding : '(' VAR expr ')' ;
-
-lista : '(' (expr|NUM|VAR)* ')' ;
-
-BOOLEAN : '#t' | '#f' ;
-
-NUM : [0-9]+ ;
-
-VAR : [a-zA-Z]+ ;
-
-WS : [ \n\t]+ -> skip ;
+// Comments and whitespace
+COMMENT : ';' ~[\r\n]* -> skip; // Comentarios en Scheme
+WS      : [ \t\n\r]+ -> skip;

@@ -1,3 +1,3 @@
-(let ((x 5)
-      (y 3))
-  (+ x y))
+(let ((x 5) (y 3))
+  (display (+ x y))
+  (newline))
