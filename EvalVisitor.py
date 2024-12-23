@@ -179,18 +179,6 @@ class EvalVisitor(SchemeVisitor):
         return constant_name
 
 
-    def visitFunctionDeclaration(self, ctx):
-        function_name = ctx.ID(0).getText()
-        params = [param.getText() for param in ctx.ID()[1:]]
-        block = ctx.block()
-
-        # print(f"DEBUG: visitFunctionDeclaration - Definiendo función: {function_name} con parámetros {params}")
-
-        # Guardar la función como un valor en FunctionTable
-        FunctionTable[function_name] = (params, block)
-        # print(f"DEBUG: visitFunctionDeclaration - FunctionTable actualizada: {FunctionTable}")
-
-        return function_name
 
 
     def visitLetExpr(self, ctx):

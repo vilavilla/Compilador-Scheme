@@ -1,18 +1,23 @@
-(define (es-par n)
-  (= (mod n 2) 0)) ; Devuelve #t si n es divisible por 2
+(define (es-divisible x y)
+  (= (mod x y) 0))
 
-(define (es-impar n)
-  (not (es-par n))) ; Devuelve lo opuesto de es-par
+(define (primo-rec n x)
+  (if (> (* x x) n)
+      #t
+      (if (es-divisible n x)
+          #f
+          (primo-rec n (+ x 1)))))
 
-; Pruebas
-(display (es-par 2)) ; Esperado: #t
+(define (es-primo n)
+  (if (< n 2)
+      #f
+      (primo-rec n 2)))
+
+(display (es-primo 2)) ; Esperado: #t
 (newline)
 
-(display (es-par 3)) ; Esperado: #f
+(display (es-primo 4)) ; Esperado: #f
 (newline)
 
-(display (es-impar 2)) ; Esperado: #f
-(newline)
-
-(display (es-impar 3)) ; Esperado: #t
+(display (es-primo 17)) ; Esperado: #t
 (newline)
