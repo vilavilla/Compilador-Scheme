@@ -1,6 +1,0 @@
-Error: Division by zero
-Error: Cannot take car of empty list
-Error: Cannot take cdr of empty list
-Error: Undefined variable 'x'
-Error: Function 'factorial' called with wrong number of arguments
-Error: Function 'fibonacci' called with wrong number of arguments

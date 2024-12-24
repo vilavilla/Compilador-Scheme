@@ -1,10 +1,10 @@
-; Definición de la función map
+; Función map: aplicar una función a cada elemento de una lista
 (define (map func llista)
   (cond
     ((null? llista) '())  ; Caso base: lista vacía
     (else (cons (func (car llista)) (map func (cdr llista)))))) ; Aplicar func al car y recursión al cdr
 
-; Definición de la función filter
+; Función filter: filtrar elementos de una lista según un predicado
 (define (filter predicat llista)
   (cond
     ((null? llista) '())  ; Caso base: lista vacía
@@ -15,29 +15,55 @@
 ; Lista de prueba
 (define lista '(1 2 3 4 5 6 7 8 9 10))
 
-; Prueba de map: duplicar cada elemento
-(display (map (lambda (x) (* x 2)) lista)) ; Esperado: (2 4 6 8 10 12 14 16 18 20)
+; Funciones nombradas
+(define (duplicar x) (* x 2))
+(define (incrementar x) (+ x 1))
+(define (modulo2 x) (mod x 2))
+(define (mayor-que-5 x) (> x 5))
+(define (menor-que-5 x) (< x 5))
+(define (es-par x) (= (mod x 2) 0))
+(define (es-multiplo-de-3 x) (= (mod x 3) 0))
+(define (impar? x) (= (mod x 2) 1))
+
+; Pruebas
+(display (map duplicar lista)) ; Test 1
 (newline)
 
-; Prueba de filter: números pares
-(display (filter (lambda (x) (= (mod x 2) 0)) lista)) ; Esperado: (2 4 6 8 10)
+(display (map incrementar lista)) ; Test 2
 (newline)
 
-; Combinación: duplicar solo los números pares
-(display (map (lambda (x) (* x 2)) (filter (lambda (x) (= (mod x 2) 0)) lista))) ; Esperado: (4 8 12 16 20)
+(display (map modulo2 lista)) ; Test 3
 (newline)
 
-; Función definida para verificar si un número es mayor que 5
-(define (mayor-que-5? x) (> x 5))
-
-; Filtrar números mayores que 5
-(display (filter mayor-que-5? lista)) ; Esperado: (6 7 8 9 10)
+(display (filter mayor-que-5 lista)) ; Test 4
 (newline)
 
-; Map sobre una función definida: sumar 1 a cada número mayor que 5
-(display (map (lambda (x) (+ x 1)) (filter mayor-que-5? lista))) ; Esperado: (7 8 9 10 11)
+(display (filter menor-que-5 lista)) ; Test 5
 (newline)
 
-; Usar map y filter para generar cuadrados de números menores que 6
-(display (map (lambda (x) (* x x)) (filter (lambda (x) (< x 6)) lista))) ; Esperado: (1 4 9 16 25)
+(display (filter es-par lista)) ; Test 6
+(newline)
+
+(display (map duplicar (filter es-par lista))) ; Test 7
+(newline)
+
+(display (map duplicar (filter menor-que-5 lista))) ; Test 8
+(newline)
+
+(display (filter es-multiplo-de-3 (map duplicar lista))) ; Test 9
+(newline)
+
+(display (map duplicar '())) ; Test 10
+(newline)
+
+(display (filter mayor-que-5 '())) ; Test 11
+(newline)
+
+(display (map incrementar (filter menor-que-5 lista))) ; Test 12
+(newline)
+
+(display (filter impar? lista)) ; Test 13
+(newline)
+
+(display (map duplicar (filter impar? lista))) ; Test 14
 (newline)
