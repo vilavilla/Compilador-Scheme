@@ -4,14 +4,14 @@ antlr:
 build: antlr
 	python3 -m pip install antlr4-python3-runtime
 
-run: build
-	python3 Scheme.py programa.scm
-
 aux:
 	java -jar antlr-4.13.2-complete.jar -Dlanguage=Python3 -visitor -no-listener Scheme.g4
 
 test: antlr
 	@echo "Ejecutando test..."
+	@echo "Test simples..."
+	@echo ""
+	
 	@python3 Scheme.py Juegos-prueba/suma.scm > Juegos-prueba/suma_test.out
 	@diff -q Juegos-prueba/suma_test.out Juegos-prueba/suma.out && echo "Prueba suma.scm completada correctamente" || echo "Error en prueba: suma.scm"
 
@@ -29,16 +29,25 @@ test: antlr
 
 	@python3 Scheme.py Juegos-prueba/entrada.scm < Juegos-prueba/entrada.inp > Juegos-prueba/entrada_test.out
 	@diff -q Juegos-prueba/entrada_test.out Juegos-prueba/entrada.out && echo "Prueba entrada.scm completada correctamente" || echo "Error en prueba: entrada.scm"
-
+	
+	@echo ""
+	@echo "Test complejos..."
+	@echo ""
 	@python3 Scheme.py Juegos-prueba/prueba_orden_superior.scm > Juegos-prueba/prueba_orden_superior_test.out
 	@diff -q Juegos-prueba/prueba_orden_superior_test.out Juegos-prueba/prueba_orden_superior.out && echo "Prueba prueba_orden_superior.scm completada correctamente" || echo "Error en prueba: prueba_orden_superior.scm"
 
 	@python3 Scheme.py Juegos-prueba/prueba_recursiva.scm > Juegos-prueba/prueba_recursiva_test.out
 	@diff -q Juegos-prueba/prueba_recursiva_test.out Juegos-prueba/prueba_recursiva.out && echo "Prueba prueba_recursiva.scm completada correctamente" || echo "Error en prueba: prueba_recursiva.scm"
 
-	@python3 Scheme.py Juegos-prueba/main.scm > Juegos-prueba/main.out
-	@diff -q Juegos-prueba/main.out Juegos-prueba/main.out && echo "Prueba main.scm completada correctamente" || echo "Error en prueba: main.scm"
-
+	@python3 Scheme.py Juegos-prueba/main.scm > Juegos-prueba/main_test.out
+	@diff -q Juegos-prueba/main.out Juegos-prueba/main_test.out && echo "Prueba main.scm completada correctamente" || echo "Error en prueba: main.scm"
+	
+	@python3 Scheme.py Juegos-prueba/extra.scm > Juegos-prueba/extra_test.out
+	@diff -q Juegos-prueba/extra.out Juegos-prueba/extra_test.out && echo "Prueba prueba_orden_superior.scm completada correctamente" || echo "Error en prueba: prueba_orden_superior.scm"
+	
+	@echo ""
+	@echo "Test errores..."
+	@echo ""
 	@python3 Scheme.py Juegos-prueba/errores1.scm > Juegos-prueba/errores1_test.out
 	@diff -q Juegos-prueba/errores1_test.out Juegos-prueba/errores1.out && echo "Prueba errores1.scm completada correctamente" || echo "Error en prueba: errores1.scm"
 

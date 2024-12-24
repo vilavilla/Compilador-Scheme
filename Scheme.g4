@@ -26,6 +26,11 @@ expr
     | '(' 'cdr' expr ')'                       #cdrExpr
     | '(' 'cons' expr expr ')'                 #consExpr
     | '(' 'null?' expr ')'                     #nullExpr
+    | '(' 'length' expr ')'                    #lengthExpr
+    | '(' 'append' expr expr ')'               #appendExpr
+    | '(' 'string-append' expr+ ')'            #stringAppendExpr
+    | '(' 'string-length' expr ')'             #stringLengthExpr
+    | '(' 'string=?' expr expr ')'             #stringEqualsExpr
     | ID expr*                                 #functionCallExpr
     | LIST                                     #listLiteralExpr
     | EMPTY_LIST                               #emptyListExpr
@@ -90,5 +95,5 @@ ID  : [a-zA-Z][a-zA-Z0-9_-]*;
 NUM : [0-9]+;
 
 // Comments and whitespace
-COMMENT : ';' ~[\r\n]* -> skip; // Comentarios en Scheme
+COMMENT : ';' ~[\r\n]* -> skip;
 WS      : [ \t\n\r]+ -> skip;

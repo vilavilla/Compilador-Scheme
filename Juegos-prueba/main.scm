@@ -21,13 +21,13 @@
 
   ; Prueba 2: Condicional simple
   (display "Prueba 2: Condicional simple") (newline)
-  (display "(if (< 3 5) \"verdadero\" \"falso\") => ")
+  (display "(if (< 3 5)verdaderfals) => ")
   (display (if (< 3 5) "verdadero" "falso")) ; Evaluación de una expresión lógica
   (newline)
 
   ; Prueba 3: Condicional múltiple (cond)
   (display "Prueba 3: Condicional múltiple") (newline)
-  (display "(cond ((< 5 3) \"menor\") ((= 5 5) \"igual\") (else \"ninguno\")) => ")
+  (display "(cond ((< 5 3)meno) ((= 5 5)igua) (elseningun)) => ")
   (display (cond
              ((< 5 3) "menor")
              ((= 5 5) "igual")

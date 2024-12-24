@@ -1,4 +1,3 @@
-
 Pruebas de operaciones avanzadas con listas
 length '(1 2 3 4): 4
 append '(1 2) '(3 4): (1 2 3 4)

@@ -197,6 +197,51 @@ class SchemeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SchemeParser#lengthExpr.
+    def enterLengthExpr(self, ctx:SchemeParser.LengthExprContext):
+        pass
+
+    # Exit a parse tree produced by SchemeParser#lengthExpr.
+    def exitLengthExpr(self, ctx:SchemeParser.LengthExprContext):
+        pass
+
+
+    # Enter a parse tree produced by SchemeParser#appendExpr.
+    def enterAppendExpr(self, ctx:SchemeParser.AppendExprContext):
+        pass
+
+    # Exit a parse tree produced by SchemeParser#appendExpr.
+    def exitAppendExpr(self, ctx:SchemeParser.AppendExprContext):
+        pass
+
+
+    # Enter a parse tree produced by SchemeParser#stringAppendExpr.
+    def enterStringAppendExpr(self, ctx:SchemeParser.StringAppendExprContext):
+        pass
+
+    # Exit a parse tree produced by SchemeParser#stringAppendExpr.
+    def exitStringAppendExpr(self, ctx:SchemeParser.StringAppendExprContext):
+        pass
+
+
+    # Enter a parse tree produced by SchemeParser#stringLengthExpr.
+    def enterStringLengthExpr(self, ctx:SchemeParser.StringLengthExprContext):
+        pass
+
+    # Exit a parse tree produced by SchemeParser#stringLengthExpr.
+    def exitStringLengthExpr(self, ctx:SchemeParser.StringLengthExprContext):
+        pass
+
+
+    # Enter a parse tree produced by SchemeParser#stringEqualsExpr.
+    def enterStringEqualsExpr(self, ctx:SchemeParser.StringEqualsExprContext):
+        pass
+
+    # Exit a parse tree produced by SchemeParser#stringEqualsExpr.
+    def exitStringEqualsExpr(self, ctx:SchemeParser.StringEqualsExprContext):
+        pass
+
+
     # Enter a parse tree produced by SchemeParser#functionCallExpr.
     def enterFunctionCallExpr(self, ctx:SchemeParser.FunctionCallExprContext):
         pass

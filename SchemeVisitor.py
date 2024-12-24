@@ -114,6 +114,31 @@ class SchemeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SchemeParser#lengthExpr.
+    def visitLengthExpr(self, ctx:SchemeParser.LengthExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SchemeParser#appendExpr.
+    def visitAppendExpr(self, ctx:SchemeParser.AppendExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SchemeParser#stringAppendExpr.
+    def visitStringAppendExpr(self, ctx:SchemeParser.StringAppendExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SchemeParser#stringLengthExpr.
+    def visitStringLengthExpr(self, ctx:SchemeParser.StringLengthExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SchemeParser#stringEqualsExpr.
+    def visitStringEqualsExpr(self, ctx:SchemeParser.StringEqualsExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SchemeParser#functionCallExpr.
     def visitFunctionCallExpr(self, ctx:SchemeParser.FunctionCallExprContext):
         return self.visitChildren(ctx)

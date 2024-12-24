@@ -1,36 +1,46 @@
 # Scheme Compiler
 
-Este documento describe el funcionamiento y las características del compilador de Scheme desarrollado en Python usando ANTLR4.
+Este documento describe el funcionamiento y las caracteristicas del **intérprete de Scheme** desarrollado en Python usando ANTLR4. A continuacion se detallan las funcionalidades soportadas, la estructura del proyecto, la forma de uso y la manera de ejecutar las pruebas incluidas.
 
 ---
 
-## **Características Generales**
+## **Caracteristicas Generales**
 
-Este compilador procesa y evalúa programas escritos en Scheme. Entre sus características principales se encuentran:
+Este interprete procesa y evalua programas escritos en Scheme. Algunas de las caracteristicas mas relevantes son:
 
-1. **Soporte para Expresiones Básicas**:
-   - Operaciones aritméticas: `+`, `-`, `*`, `/`, `mod`, `^`
-   - Comparaciones: `<`, `<=`, `>`, `>=`, `=`, `!=`
-   - Operadores lógicos: `&&`, `||`, `!`
+1. **Soporte para Expresiones Basicas**  
+   - Operaciones aritmeticas: `+`, `-`, `*`, `/`, `mod`, `^`  
+   - Comparaciones: `<`, `<=`, `>`, `>=`, `=`, `<>`  
+   - Operadores logicos: `and`, `or`, `not`  
 
-2. **Control de Flujo**:
-   - Expresiones condicionales: `if`, `cond`
+2. **Control de Flujo**  
+   - Expresiones condicionales con `if`  
+   - Bloques `cond` con clausulas normales y `else`  
 
-3. **Manejo de Listas**:
-   - Operaciones como `car`, `cdr`, `cons`, `null?`
-   - Literales de listas en formato `(1 2 3)`
+3. **Manejo de Listas**  
+   - Operaciones `car`, `cdr`, `cons`, `null?`  
+   - Literal de listas: `'(1 2 3)`  
+   - Lista vacia: `'( )`  
+   - **Nuevas funciones**: `length`, `append`  
 
-4. **Funciones de Orden Superior**:
-   - `map`, `filter`
+4. **Manejo de Cadenas**  
+   - `string-append` para concatenar multiples cadenas  
+   - `string-length` para obtener la longitud de una cadena  
+   - `string=?` para comparar la igualdad entre dos cadenas  
 
-5. **Definiciones de Variables y Funciones**:
-   - Variables globales con `define`
-   - Funciones anidadas
+5. **Definiciones de Variables y Funciones**  
+   - Definicion de constantes con `(define <id> <expr>)`  
+   - Definicion de funciones con `(define (nombre param1 param2 ...) (cuerpo))`  
+   - Soporte para ambitos anidados mediante una pila de `SymbolTable`  
 
-6. **Entrada/Salida**:
-   - Lectura con `read`
-   - Impresión con `display`
-   - Nueva línea con `newline`
+6. **Entrada/Salida**  
+   - `read` para leer un entero desde la entrada estandar  
+   - `display` para imprimir un valor sin salto de linea  
+   - `write` para imprimir un valor, manteniendo comillas de cadenas y formato en listas  
+   - `newline` para imprimir un salto de linea  
+
+7. **Estructura de `let`**  
+   - Bloques locales de vinculos `(let ((var1 expr1) (var2 expr2) ...) <expr1> <expr2> ...)`  
 
 ---
 
@@ -38,170 +48,279 @@ Este compilador procesa y evalúa programas escritos en Scheme. Entre sus caract
 
 ### **Archivos Principales**
 
-1. **`Scheme.g4`**
-   - Contiene la gramática ANTLR4 para analizar el código Scheme.
+1. **`Scheme.g4`**  
+   - Contiene la gramatica en ANTLR4 que describe la estructura sintactica del lenguaje Scheme manejado por este proyecto.  
+   - Se incluyen nuevas reglas para funciones como `length`, `append`, `string-append`, `string-length` y `string=?`.  
 
-2. **`SchemeLexer.py` y `SchemeParser.py`**
-   - Generados automáticamente por ANTLR4.
+2. **`SchemeLexer.py` y `SchemeParser.py`**  
+   - Generados automaticamente por ANTLR4 a partir de la gramatica `Scheme.g4`.  
 
-3. **`EvalVisitor.py`**
-   - Implementa la lógica de evaluación de las expresiones y nodos del AST.
+3. **`EvalVisitor.py`**  
+   - Implementa la logica de evaluacion de las expresiones y nodos del AST (Abstract Syntax Tree).  
+   - Contiene los metodos de visita para cada tipo de nodo (expresiones aritmeticas, condicionales, manejo de listas, cadenas, etc.).  
 
-4. **`Scheme.py`**
-   - Punto de entrada principal para procesar programas Scheme.
+4. **`Scheme.py`**  
+   - Punto de entrada principal para procesar programas Scheme.  
+   - Define la funcion `processInput()` para leer el archivo fuente Scheme, construir el arbol sintactico y delegar su evaluacion a `EvalVisitor`.  
 
-5. **Carpeta `Juegos-prueba`**
-   - Contiene programas de prueba y sus salidas esperadas.
+5. **`Makefile`**  
+   - Facilita la generacion del lexer y parser con `antlr4`, la instalacion de la runtime para Python y la ejecucion de las pruebas.  
+   - Incluye la regla `test` que procesa varios archivos de la carpeta `Juegos-prueba` y compara la salida obtenida con la salida esperada (.out).  
 
-### **Gramaticales Principales**
+6. **Carpeta `Juegos-prueba`**  
+   - Contiene programas de prueba (`.scm`) y archivos de salida esperada (`.out`). Tambien puede contener entradas (`.inp`) para pruebas que requieren entrada del usuario.  
+   - Ejemplos: `suma.scm`, `cond.scm`, `errores1.scm`, etc.  
+
+---
+
+## **Gramatica Resumida (Scheme.g4)**
+
+Dentro de `Scheme.g4`, se definen las reglas principales para reconocer el lenguaje Scheme simplificado. Algunas producciones relevantes:
 
 - **Expresiones**:
-  ```
+  ```antlr
   expr
-    : '(' expr ')'                           #groupExpr
-    | ID                                     #variableExpr
-    | NUM                                    #numberExpr
-    | STRING                                 #stringExpr
-    | '#t'                                   #trueExpr
-    | '#f'                                   #falseExpr
+    : '(' expr ')'                             #groupExpr
+    | ID                                       #variableExpr
+    | NUM                                      #numberExpr
+    | STRING                                   #stringExpr
+    | '#t'                                     #trueExpr
+    | '#f'                                     #falseExpr
     | '(' (SUM | SUB | PROD | DIV | MOD | EXP) expr expr ')' #arithmeticExpr
-    | '(' 'if' expr expr expr ')'            #ifExpr
-    | '(' 'cond' condClause+ ')'             #condExpr
-    | '(' 'map' ID expr ')'                  #mapExpr
-    | '(' 'filter' ID expr ')'               #filterExpr
-    | ID expr*                               #functionCallExpr
-    ```
-
-- **Definiciones**:
+    | '(' 'if' expr expr expr ')'              #ifExpr
+    | '(' 'cond' condClause+ ')'               #condExpr
+    | '(' 'let' '(' letBinding (letBinding)* ')' expr+ ')'   #letExpr
+    | '(' 'read' ')'                           #readExpr
+    | '(' 'display' expr ')'                   #displayExpr
+    | '(' 'write' expr ')'                     #writeExpr
+    | '(' 'newline' ')'                        #newlineExpr
+    | '(' (LESS | LESSEQ | GREATER | GREATEREQ | EQ | NOTEQ) expr expr ')' #comparisonExpr
+    | '(' (AND | OR | NOT) expr+ ')'           #logicalExpr
+    | '(' 'car' expr ')'                       #carExpr
+    | '(' 'cdr' expr ')'                       #cdrExpr
+    | '(' 'cons' expr expr ')'                 #consExpr
+    | '(' 'null?' expr ')'                     #nullExpr
+    | '(' 'length' expr ')'                    #lengthExpr
+    | '(' 'append' expr expr ')'               #appendExpr
+    | '(' 'string-append' expr+ ')'            #stringAppendExpr
+    | '(' 'string-length' expr ')'             #stringLengthExpr
+    | '(' 'string=?' expr expr ')'             #stringEqualsExpr
+    | ID expr*                                 #functionCallExpr
+    | LIST                                     #listLiteralExpr
+    | EMPTY_LIST                               #emptyListExpr
+    ;
   ```
+
+- **Declaraciones**:
+  ```antlr
   declaration
-    : '(' 'define' '(' ID ID* ')' block ')'  #functionDeclaration
-    | '(' 'define' ID expr ')'               #constantDeclaration
+    : '(' 'define' ID expr ')'                 #constantDeclaration
+    | '(' 'define' '(' ID ID* ')' block ')'    #functionDeclaration
+    ;
+  ```
+
+- **Bloques y Sentencias**:
+  ```antlr
+  block
+    : stmt*
+    ;
+
+  stmt
+    : expr                                      #expressionStmt
+    | '(' 'define' ID expr ')'                  #assignmentStmt
+    | '(' 'if' expr block ')'                   #ifStmt
+    | '(' 'if' expr block 'else' block ')'      #ifElseStmt
+    ;
+  ```
+
+- **Operadores**:
+  ```antlr
+  SUM       : '+';
+  SUB       : '-';
+  PROD      : '*';
+  DIV       : '/';
+  MOD       : 'mod';
+  EXP       : '^';
+  NOTEQ     : '<>';
+  LESSEQ    : '<=';
+  GREATEREQ : '>=';
+  LESS      : '<';
+  GREATER   : '>';
+  EQ        : '=';
+  AND       : 'and';
+  OR        : 'or';
+  NOT       : 'not';
   ```
 
 ---
 
-## **Funciones Principales**
+## **Funciones Principales (EvalVisitor.py)**
 
-### **`EvalVisitor.py`**
+El archivo `EvalVisitor.py` contiene la logica de evaluacion de cada nodo del arbol sintactico. Destacamos algunos metodos:
 
-#### Métodos Clave
+- **Listas**  
+  - `visitCarExpr`, `visitCdrExpr`, `visitNullExpr`: Acceso y verificacion de listas.  
+  - `visitLengthExpr`: Nuevo metodo que calcula el tamano de una lista.  
+  - `visitAppendExpr`: Concatena dos listas.  
 
-1. **`visitFunctionDeclaration`**
-   - Define funciones globales y anidadas.
+- **Cadenas**  
+  - `visitStringAppendExpr`: Concatena multiples cadenas (equivalente a `string-append`).  
+  - `visitStringLengthExpr`: Devuelve la longitud de una cadena.  
+  - `visitStringEqualsExpr`: Compara dos cadenas, devolviendo `#t` o `#f`.  
 
-2. **`visitFunctionCallExpr`**
-   - Evalúa llamadas a funciones, incluyendo el manejo de argumentos y ámbitos.
+- **Declaraciones y Ambitos**  
+  - `visitConstantDeclaration`: Define variables en el scope global.  
+  - `visitFunctionDeclaration`: Almacena la definicion de funciones (nombre, parametros y bloque).  
+  - `visitFunctionCallExpr`: Evalua la llamada a una funcion, creando un nuevo scope local para los parametros.  
 
-3. **`visitIfExpr`**
-   - Evalúa estructuras condicionales `if`.
+- **Expresiones de Control**  
+  - `visitIfExpr`: Maneja expresiones `(if <cond> <exprSi> <exprNo>)`.  
+  - `visitCondExpr`: Itera por las clausulas condicionales `(cond ...)`.  
 
-4. **`visitCondExpr`**
-   - Evalúa bloques `cond`, comprobando cada condición en orden.
-
-5. **`visitListLiteralExpr`**
-   - Convierte literales de listas Scheme a listas de Python.
-
-6. **`visitDisplayExpr`**
-   - Imprime el resultado de una expresión en pantalla.
+- **Operaciones Aritmeticas y Logicas**  
+  - `ArithmeticDicc`: Diccionario para `+`, `-`, `*`, `/`, `mod`, `^`.  
+  - `LogicDicc`: Diccionario para `<`, `<=`, `>`, `>=`, `<>`, `=`, `and`, `or`, `not`.  
 
 ---
 
-## **Instrucciones de Uso**
+## **Uso del Intérprete**
 
-### **Compilar y Ejecutar**
+### **Requisitos**
 
-1. Generar el Lexer y Parser:
+- Python 3.x  
+- ANTLR4 (se instala automaticamente con la regla `make build` o manualmente `pip install antlr4-python3-runtime`).  
+
+### **Compilar y Ejecutar**  
+
+1. **Generar el lexer y parser**  
    ```bash
    make aux
    ```
+   Esto ejecuta `java -jar antlr-4.13.2-complete.jar` para generar los archivos `SchemeLexer.py`, `SchemeParser.py` y `SchemeVisitor.py` basados en `Scheme.g4`.
 
-2. Construir el proyecto:
+2. **Construir el proyecto**  
    ```bash
    make build
    ```
+   Esto instala la dependencia `antlr4-python3-runtime`.
 
-3. Ejecutar un programa Scheme:
+3. **Ejecutar un programa Scheme**  
    ```bash
    make run
    ```
+   Por defecto, intenta ejecutar `programa.scm`. Si quieres ejecutar otro archivo, puedes modificar la regla o directamente invocar:
+   ```bash
+   python3 Scheme.py ruta/a/tu_programa.scm
+   ```
 
-4. Probar con casos predefinidos:
+4. **Ejecutar las pruebas**  
    ```bash
    make test
-   make test2
    ```
+   - Esta regla compila la gramatica, luego ejecuta cada uno de los archivos de prueba en la carpeta `Juegos-prueba`, comparando las salidas generadas con las salidas esperadas `.out`.  
+   - En caso de existir diferencias, se mostrara un mensaje de error indicando la prueba que ha fallado.  
 
 ---
 
 ## **Ejemplos de Prueba**
 
-1. **Operaciones Básicas**:
+A continuacion algunos ejemplos cortos de uso:
+
+1. **Operaciones Basicas**  
    ```scheme
-   (display (+ 3 5)) ; Esperado: 8
+   (display (+ 3 5))         ; Esperado: 8
    (newline)
-   (display (< 3 5)) ; Esperado: #t
+   (display (mod 10 3))      ; Esperado: 1
+   (newline)
+   (display (if (> 5 2) 10 20)) ; Esperado: 10
    (newline)
    ```
 
-2. **Definiciones y Condicionales**:
+2. **Listas y sus Nuevas Funciones**  
    ```scheme
-   (define x 5)
-   (display (if (> x 3) "Mayor" "Menor")) ; Esperado: Mayor
+   (display (length '(1 2 3 4))) ; Esperado: 4
+   (newline)
+
+   (display (append '(1 2) '(3 4))) ; Esperado: (1 2 3 4)
    (newline)
    ```
 
-3. **Funciones y Recursión**:
+3. **Cadenas**  
    ```scheme
-   (define (factorial n)
-     (if (= n 0)
-         1
-         (* n (factorial (- n 1)))))
+   (display (string-append "Hola, " "Mundo" "!"))  ; Esperado: Hola, Mundo!
+   (newline)
 
-   (display (factorial 5)) ; Esperado: 120
+   (display (string-length "Hola"))     ; Esperado: 4
+   (newline)
+
+   (display (string=? "abc" "abc"))     ; Esperado: #t
+   (newline)
+   (display (string=? "abc" "def"))     ; Esperado: #f
    (newline)
    ```
 
-4. **Map y Filter**:
+4. **Funciones Definidas por el Usuario**  
    ```scheme
-   (define (doblar x) (* x 2))
-   (display (map doblar '(1 2 3 4))) ; Esperado: (2 4 6 8)
-   (newline)
+   (define (suma a b)
+     (+ a b))
 
-   (define (es-par x) (= (mod x 2) 0))
-   (display (filter es-par '(1 2 3 4 5 6))) ; Esperado: (2 4 6)
+   (display (suma 5 7)) ; Esperado: 12
+   (newline)
+   ```
+
+5. **Uso de Let**  
+   ```scheme
+   (let ((x 3)
+         (y 4))
+     (display (* x y))) ; Esperado: 12
    (newline)
    ```
 
 ---
 
-## **Ejecución de Pruebas**
+## **Ejecucion de Pruebas (Makefile)**
 
-- Las pruebas se encuentran en las carpetas `Juegos-prueba` y `Juegos-prueba2`.
-- Cada prueba tiene un archivo `.scm` con el programa Scheme y un archivo `.out` con la salida esperada.
+El archivo `Makefile` incluye la regla `test`, que ejecuta una bateria de pruebas:
 
-Para ejecutar las pruebas:
+- **Pruebas simples**:  
+  - `suma.scm`, `recursiva.scm`, `cond.scm`, `let.scm`, `map.scm`, `entrada.scm`
+- **Pruebas complejas**:  
+  - `prueba_orden_superior.scm`, `prueba_recursiva.scm`, `main.scm`, `extra.scm`
+- **Pruebas de errores**:  
+  - `errores1.scm`, `errores2.scm`, ..., `errores8.scm`
+
+Cada prueba `<archivo>.scm` genera una salida `<archivo>_test.out`. Luego se compara con `<archivo>.out`. Si coinciden, se indica que la prueba fue completada correctamente; de lo contrario, se muestra un error.
+
+Para correr estas pruebas en bloque:
 ```bash
 make test
-make test2
 ```
+Si todas las pruebas coinciden, se mostrara un mensaje de confirmacion para cada una.
 
 ---
 
 ## **Limitaciones y Mejoras Futuras**
 
-1. **Soporte para macros**:
-   - Implementar macros para expandir la funcionalidad de Scheme.
+1. **Soporte adicional de macros**  
+   - Expandiendo la gramatica para permitir definiciones de macros y su expansion en tiempo de compilacion.  
 
-2. **Funciones Lambda**:
-   - Añadir soporte para funciones anónimas.
+2. **Funciones Lambda**  
+   - Permitir la definicion de funciones anonimas (`(lambda (x) <cuerpo>)`).  
 
-3. **Errores de Tipo**:
-   - Mejorar la gestión de errores cuando se usan tipos incorrectos.
+3. **Mejoras en el Sistema de Tipos**  
+   - Validaciones mas robustas para detectar mezclas indebidas de tipos (p.ej., intentar hacer `+` con cadenas).  
+
+4. **Soporte para mas Operaciones de Lista**  
+   - `map`, `filter`, `fold`, entre otras.  
 
 ---
 
 ## **Contribuciones**
 
-Cualquier contribución para mejorar el compilador es bienvenida. Por favor, crea un issue o realiza un pull request en el repositorio.
+Las contribuciones son bienvenidas. Por favor, crea un **issue** o haz un **pull request** en el repositorio si deseas mejorar o corregir algo en este interprete.
 
+**Contacto**:  
+- Autor original: _Nombre del autor_  
+- Mantenedor actual: _Nombre del mantenedor_  
+
+¡Gracias por utilizar este interprete de Scheme!

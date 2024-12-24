@@ -1,5 +1,4 @@
 ; Pruebas de operaciones avanzadas con listas
-(newline)
 (display "Pruebas de operaciones avanzadas con listas") (newline)
 
 (display "length '(1 2 3 4): ")

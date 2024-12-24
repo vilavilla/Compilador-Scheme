@@ -139,6 +139,7 @@ class EvalVisitor(SchemeVisitor):
         value = self.visit(ctx.expr())
         SymbolTable[0][constant_name] = value
         return constant_name
+    
 
     def visitFunctionDeclaration(self, ctx):
         function_name = ctx.ID(0).getText()
@@ -305,10 +306,46 @@ class EvalVisitor(SchemeVisitor):
         if not isinstance(lst, list):
             raise Exception(f"Error: 'cons' requiere una lista como segundo argumento, recibido: {lst}")
         return [element] + lst
+    def visitLengthExpr(self, ctx):
+        lst = self.visit(ctx.expr())
+        if not isinstance(lst, list):
+            raise Exception(f"Error: 'length' solo se puede usar con listas, recibido: {lst}")
+        return len(lst)
+    
+    def visitAppendExpr(self, ctx):
+        lst1 = self.visit(ctx.expr(0))
+        lst2 = self.visit(ctx.expr(1))
+        if not isinstance(lst1, list) or not isinstance(lst2, list):
+            raise Exception(f"Error: 'append' requiere listas como argumentos, recibido: {lst1}, {lst2}")
+        return lst1 + lst2
+
+    
+    
+    # ---------------------------
+    #  Operaciones  avanzadas con cadenas 
+    # ---------------------------
+    def visitStringAppendExpr(self, ctx):
+        strings = [self.visit(expr) for expr in ctx.expr()]
+        if not all(isinstance(s, str) for s in strings):
+            raise Exception(f"Error: 'string-append' requiere solo cadenas, recibido: {strings}")
+        return ''.join(strings)
+    def visitStringLengthExpr(self, ctx):
+        string = self.visit(ctx.expr())
+        if not isinstance(string, str):
+            raise Exception(f"Error: 'string-length' requiere una cadena, recibido: {string}")
+        return len(string)
+    def visitStringEqualsExpr(self, ctx):
+        str1 = self.visit(ctx.expr(0))
+        str2 = self.visit(ctx.expr(1))
+        if not isinstance(str1, str) or not isinstance(str2, str):
+            raise Exception(f"Error: 'string=?' requiere cadenas como argumentos, recibido: {str1}, {str2}")
+        return '#t' if str1 == str2 else '#f'
+
 
     # ---------------------------
     #  Llamada a funciones
     # ---------------------------
+    
     def visitFunctionCallExpr(self, ctx):
         func_name = ctx.ID().getText()
         self.validate_identifier(func_name)
