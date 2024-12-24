@@ -39,7 +39,7 @@ letBinding
 // Conditional clauses
 condClause
     : '(' expr expr ')'                        #condClauseExpr
-    | '(' 'else' expr ')'                        #condElseClause
+    | '(' 'else' expr ')'                      #condElseClause
     ;
 
 // Declarations
@@ -48,7 +48,7 @@ declaration
     | '(' 'define' '(' ID ID* ')' block ')'    #functionDeclaration
     ;
 
-// Blocks are made up Statements
+// Blocks are made up of Statements
 block
     : stmt*
     ;
@@ -62,32 +62,32 @@ stmt
     ;
 
 // Operators
-SUM     : '+';
-SUB     : '-';
-PROD    : '*';
-DIV     : '/';
-MOD     : 'mod';
-EXP     : '^';
-NOTEQ   : '<>';
-LESSEQ  : '<=';
-GREATEREQ: '>=' ;
-LESS    : '<';
-GREATER : '>';
-EQ      : '=';
-AND     : 'and';
-OR      : 'or';
-NOT     : 'not';
+SUM       : '+';
+SUB       : '-';
+PROD      : '*';
+DIV       : '/';
+MOD       : 'mod';
+EXP       : '^';
+NOTEQ     : '<>';
+LESSEQ    : '<=';
+GREATEREQ : '>=';
+LESS      : '<';
+GREATER   : '>';
+EQ        : '=';
+AND       : 'and';
+OR        : 'or';
+NOT       : 'not';
 
 // List literals
-LIST : '\'' '(' (NUM | ID | STRING) (WS (NUM | ID | STRING))* ')';
+LIST       : '\'' '(' (NUM | ID | STRING) (WS (NUM | ID | STRING))* ')';
 EMPTY_LIST : '\'' '()';
 
 // Strings
-STRING  : '"' (~["\\] | '\\' .)* '"';
+STRING : '"' (~["\\] | '\\' .)* '"';
 
 // Identifiers and numbers
-ID : [a-zA-Z][a-zA-Z0-9_-]*;
-NUM         : [0-9]+;
+ID  : [a-zA-Z][a-zA-Z0-9_-]*;
+NUM : [0-9]+;
 
 // Comments and whitespace
 COMMENT : ';' ~[\r\n]* -> skip; // Comentarios en Scheme
