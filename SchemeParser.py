@@ -10,77 +10,79 @@ else:
 
 def serializedATN():
     return [
-        4,1,38,204,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,39,209,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,1,0,5,0,16,8,0,10,0,12,0,19,9,0,1,0,5,0,22,8,0,10,0,12,0,25,9,
         0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
         1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,54,8,1,11,1,12,
         1,55,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,65,8,1,10,1,12,1,68,9,1,1,1,
         1,1,4,1,72,8,1,11,1,12,1,73,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,98,8,1,11,
-        1,12,1,99,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,127,8,1,10,1,12,
-        1,130,9,1,1,1,1,1,3,1,134,8,1,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,
-        3,1,3,1,3,1,3,1,3,1,3,1,3,3,3,151,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,
-        4,1,4,1,4,1,4,1,4,5,4,164,8,4,10,4,12,4,167,9,4,1,4,1,4,1,4,1,4,
-        3,4,173,8,4,1,5,5,5,176,8,5,10,5,12,5,179,9,5,1,6,1,6,1,6,1,6,1,
-        6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,
-        6,3,6,202,8,6,1,6,0,0,7,0,2,4,6,8,10,12,0,3,1,0,17,22,1,0,23,28,
-        1,0,29,31,231,0,17,1,0,0,0,2,133,1,0,0,0,4,135,1,0,0,0,6,150,1,0,
-        0,0,8,172,1,0,0,0,10,177,1,0,0,0,12,201,1,0,0,0,14,16,3,8,4,0,15,
-        14,1,0,0,0,16,19,1,0,0,0,17,15,1,0,0,0,17,18,1,0,0,0,18,23,1,0,0,
-        0,19,17,1,0,0,0,20,22,3,2,1,0,21,20,1,0,0,0,22,25,1,0,0,0,23,21,
-        1,0,0,0,23,24,1,0,0,0,24,26,1,0,0,0,25,23,1,0,0,0,26,27,5,0,0,1,
-        27,1,1,0,0,0,28,29,5,1,0,0,29,30,3,2,1,0,30,31,5,2,0,0,31,134,1,
-        0,0,0,32,134,5,35,0,0,33,134,5,36,0,0,34,134,5,34,0,0,35,134,5,3,
-        0,0,36,134,5,4,0,0,37,38,5,1,0,0,38,39,7,0,0,0,39,40,3,2,1,0,40,
-        41,3,2,1,0,41,42,5,2,0,0,42,134,1,0,0,0,43,44,5,1,0,0,44,45,5,5,
-        0,0,45,46,3,2,1,0,46,47,3,2,1,0,47,48,3,2,1,0,48,49,5,2,0,0,49,134,
-        1,0,0,0,50,51,5,1,0,0,51,53,5,6,0,0,52,54,3,6,3,0,53,52,1,0,0,0,
-        54,55,1,0,0,0,55,53,1,0,0,0,55,56,1,0,0,0,56,57,1,0,0,0,57,58,5,
-        2,0,0,58,134,1,0,0,0,59,60,5,1,0,0,60,61,5,7,0,0,61,62,5,1,0,0,62,
-        66,3,4,2,0,63,65,3,4,2,0,64,63,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,
-        0,66,67,1,0,0,0,67,69,1,0,0,0,68,66,1,0,0,0,69,71,5,2,0,0,70,72,
-        3,2,1,0,71,70,1,0,0,0,72,73,1,0,0,0,73,71,1,0,0,0,73,74,1,0,0,0,
-        74,75,1,0,0,0,75,76,5,2,0,0,76,134,1,0,0,0,77,78,5,1,0,0,78,79,5,
-        8,0,0,79,134,5,2,0,0,80,81,5,1,0,0,81,82,5,9,0,0,82,83,3,2,1,0,83,
-        84,5,2,0,0,84,134,1,0,0,0,85,86,5,1,0,0,86,87,5,10,0,0,87,134,5,
-        2,0,0,88,89,5,1,0,0,89,90,7,1,0,0,90,91,3,2,1,0,91,92,3,2,1,0,92,
-        93,5,2,0,0,93,134,1,0,0,0,94,95,5,1,0,0,95,97,7,2,0,0,96,98,3,2,
-        1,0,97,96,1,0,0,0,98,99,1,0,0,0,99,97,1,0,0,0,99,100,1,0,0,0,100,
-        101,1,0,0,0,101,102,5,2,0,0,102,134,1,0,0,0,103,104,5,1,0,0,104,
-        105,5,11,0,0,105,106,3,2,1,0,106,107,5,2,0,0,107,134,1,0,0,0,108,
-        109,5,1,0,0,109,110,5,12,0,0,110,111,3,2,1,0,111,112,5,2,0,0,112,
-        134,1,0,0,0,113,114,5,1,0,0,114,115,5,13,0,0,115,116,3,2,1,0,116,
-        117,3,2,1,0,117,118,5,2,0,0,118,134,1,0,0,0,119,120,5,1,0,0,120,
-        121,5,14,0,0,121,122,3,2,1,0,122,123,5,2,0,0,123,134,1,0,0,0,124,
-        128,5,35,0,0,125,127,3,2,1,0,126,125,1,0,0,0,127,130,1,0,0,0,128,
-        126,1,0,0,0,128,129,1,0,0,0,129,134,1,0,0,0,130,128,1,0,0,0,131,
-        134,5,32,0,0,132,134,5,33,0,0,133,28,1,0,0,0,133,32,1,0,0,0,133,
-        33,1,0,0,0,133,34,1,0,0,0,133,35,1,0,0,0,133,36,1,0,0,0,133,37,1,
-        0,0,0,133,43,1,0,0,0,133,50,1,0,0,0,133,59,1,0,0,0,133,77,1,0,0,
-        0,133,80,1,0,0,0,133,85,1,0,0,0,133,88,1,0,0,0,133,94,1,0,0,0,133,
-        103,1,0,0,0,133,108,1,0,0,0,133,113,1,0,0,0,133,119,1,0,0,0,133,
-        124,1,0,0,0,133,131,1,0,0,0,133,132,1,0,0,0,134,3,1,0,0,0,135,136,
-        5,1,0,0,136,137,5,35,0,0,137,138,3,2,1,0,138,139,5,2,0,0,139,5,1,
-        0,0,0,140,141,5,1,0,0,141,142,3,2,1,0,142,143,3,2,1,0,143,144,5,
-        2,0,0,144,151,1,0,0,0,145,146,5,1,0,0,146,147,5,15,0,0,147,148,3,
-        2,1,0,148,149,5,2,0,0,149,151,1,0,0,0,150,140,1,0,0,0,150,145,1,
-        0,0,0,151,7,1,0,0,0,152,153,5,1,0,0,153,154,5,16,0,0,154,155,5,35,
-        0,0,155,156,3,2,1,0,156,157,5,2,0,0,157,173,1,0,0,0,158,159,5,1,
-        0,0,159,160,5,16,0,0,160,161,5,1,0,0,161,165,5,35,0,0,162,164,5,
-        35,0,0,163,162,1,0,0,0,164,167,1,0,0,0,165,163,1,0,0,0,165,166,1,
-        0,0,0,166,168,1,0,0,0,167,165,1,0,0,0,168,169,5,2,0,0,169,170,3,
-        10,5,0,170,171,5,2,0,0,171,173,1,0,0,0,172,152,1,0,0,0,172,158,1,
-        0,0,0,173,9,1,0,0,0,174,176,3,12,6,0,175,174,1,0,0,0,176,179,1,0,
-        0,0,177,175,1,0,0,0,177,178,1,0,0,0,178,11,1,0,0,0,179,177,1,0,0,
-        0,180,202,3,2,1,0,181,182,5,1,0,0,182,183,5,16,0,0,183,184,5,35,
-        0,0,184,185,3,2,1,0,185,186,5,2,0,0,186,202,1,0,0,0,187,188,5,1,
-        0,0,188,189,5,5,0,0,189,190,3,2,1,0,190,191,3,10,5,0,191,192,5,2,
-        0,0,192,202,1,0,0,0,193,194,5,1,0,0,194,195,5,5,0,0,195,196,3,2,
-        1,0,196,197,3,10,5,0,197,198,5,15,0,0,198,199,3,10,5,0,199,200,5,
-        2,0,0,200,202,1,0,0,0,201,180,1,0,0,0,201,181,1,0,0,0,201,187,1,
-        0,0,0,201,193,1,0,0,0,202,13,1,0,0,0,13,17,23,55,66,73,99,128,133,
-        150,165,172,177,201
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,4,1,103,8,1,11,1,12,1,104,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,5,1,132,8,1,10,1,12,1,135,9,1,1,1,1,1,3,1,139,8,1,1,2,1,2,
+        1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,3,3,156,8,3,
+        1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,5,4,169,8,4,10,4,12,
+        4,172,9,4,1,4,1,4,1,4,1,4,3,4,178,8,4,1,5,5,5,181,8,5,10,5,12,5,
+        184,9,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,6,
+        1,6,1,6,1,6,1,6,1,6,1,6,1,6,3,6,207,8,6,1,6,0,0,7,0,2,4,6,8,10,12,
+        0,3,1,0,18,23,1,0,24,29,1,0,30,32,237,0,17,1,0,0,0,2,138,1,0,0,0,
+        4,140,1,0,0,0,6,155,1,0,0,0,8,177,1,0,0,0,10,182,1,0,0,0,12,206,
+        1,0,0,0,14,16,3,8,4,0,15,14,1,0,0,0,16,19,1,0,0,0,17,15,1,0,0,0,
+        17,18,1,0,0,0,18,23,1,0,0,0,19,17,1,0,0,0,20,22,3,2,1,0,21,20,1,
+        0,0,0,22,25,1,0,0,0,23,21,1,0,0,0,23,24,1,0,0,0,24,26,1,0,0,0,25,
+        23,1,0,0,0,26,27,5,0,0,1,27,1,1,0,0,0,28,29,5,1,0,0,29,30,3,2,1,
+        0,30,31,5,2,0,0,31,139,1,0,0,0,32,139,5,36,0,0,33,139,5,37,0,0,34,
+        139,5,35,0,0,35,139,5,3,0,0,36,139,5,4,0,0,37,38,5,1,0,0,38,39,7,
+        0,0,0,39,40,3,2,1,0,40,41,3,2,1,0,41,42,5,2,0,0,42,139,1,0,0,0,43,
+        44,5,1,0,0,44,45,5,5,0,0,45,46,3,2,1,0,46,47,3,2,1,0,47,48,3,2,1,
+        0,48,49,5,2,0,0,49,139,1,0,0,0,50,51,5,1,0,0,51,53,5,6,0,0,52,54,
+        3,6,3,0,53,52,1,0,0,0,54,55,1,0,0,0,55,53,1,0,0,0,55,56,1,0,0,0,
+        56,57,1,0,0,0,57,58,5,2,0,0,58,139,1,0,0,0,59,60,5,1,0,0,60,61,5,
+        7,0,0,61,62,5,1,0,0,62,66,3,4,2,0,63,65,3,4,2,0,64,63,1,0,0,0,65,
+        68,1,0,0,0,66,64,1,0,0,0,66,67,1,0,0,0,67,69,1,0,0,0,68,66,1,0,0,
+        0,69,71,5,2,0,0,70,72,3,2,1,0,71,70,1,0,0,0,72,73,1,0,0,0,73,71,
+        1,0,0,0,73,74,1,0,0,0,74,75,1,0,0,0,75,76,5,2,0,0,76,139,1,0,0,0,
+        77,78,5,1,0,0,78,79,5,8,0,0,79,139,5,2,0,0,80,81,5,1,0,0,81,82,5,
+        9,0,0,82,83,3,2,1,0,83,84,5,2,0,0,84,139,1,0,0,0,85,86,5,1,0,0,86,
+        87,5,10,0,0,87,88,3,2,1,0,88,89,5,2,0,0,89,139,1,0,0,0,90,91,5,1,
+        0,0,91,92,5,11,0,0,92,139,5,2,0,0,93,94,5,1,0,0,94,95,7,1,0,0,95,
+        96,3,2,1,0,96,97,3,2,1,0,97,98,5,2,0,0,98,139,1,0,0,0,99,100,5,1,
+        0,0,100,102,7,2,0,0,101,103,3,2,1,0,102,101,1,0,0,0,103,104,1,0,
+        0,0,104,102,1,0,0,0,104,105,1,0,0,0,105,106,1,0,0,0,106,107,5,2,
+        0,0,107,139,1,0,0,0,108,109,5,1,0,0,109,110,5,12,0,0,110,111,3,2,
+        1,0,111,112,5,2,0,0,112,139,1,0,0,0,113,114,5,1,0,0,114,115,5,13,
+        0,0,115,116,3,2,1,0,116,117,5,2,0,0,117,139,1,0,0,0,118,119,5,1,
+        0,0,119,120,5,14,0,0,120,121,3,2,1,0,121,122,3,2,1,0,122,123,5,2,
+        0,0,123,139,1,0,0,0,124,125,5,1,0,0,125,126,5,15,0,0,126,127,3,2,
+        1,0,127,128,5,2,0,0,128,139,1,0,0,0,129,133,5,36,0,0,130,132,3,2,
+        1,0,131,130,1,0,0,0,132,135,1,0,0,0,133,131,1,0,0,0,133,134,1,0,
+        0,0,134,139,1,0,0,0,135,133,1,0,0,0,136,139,5,33,0,0,137,139,5,34,
+        0,0,138,28,1,0,0,0,138,32,1,0,0,0,138,33,1,0,0,0,138,34,1,0,0,0,
+        138,35,1,0,0,0,138,36,1,0,0,0,138,37,1,0,0,0,138,43,1,0,0,0,138,
+        50,1,0,0,0,138,59,1,0,0,0,138,77,1,0,0,0,138,80,1,0,0,0,138,85,1,
+        0,0,0,138,90,1,0,0,0,138,93,1,0,0,0,138,99,1,0,0,0,138,108,1,0,0,
+        0,138,113,1,0,0,0,138,118,1,0,0,0,138,124,1,0,0,0,138,129,1,0,0,
+        0,138,136,1,0,0,0,138,137,1,0,0,0,139,3,1,0,0,0,140,141,5,1,0,0,
+        141,142,5,36,0,0,142,143,3,2,1,0,143,144,5,2,0,0,144,5,1,0,0,0,145,
+        146,5,1,0,0,146,147,3,2,1,0,147,148,3,2,1,0,148,149,5,2,0,0,149,
+        156,1,0,0,0,150,151,5,1,0,0,151,152,5,16,0,0,152,153,3,2,1,0,153,
+        154,5,2,0,0,154,156,1,0,0,0,155,145,1,0,0,0,155,150,1,0,0,0,156,
+        7,1,0,0,0,157,158,5,1,0,0,158,159,5,17,0,0,159,160,5,36,0,0,160,
+        161,3,2,1,0,161,162,5,2,0,0,162,178,1,0,0,0,163,164,5,1,0,0,164,
+        165,5,17,0,0,165,166,5,1,0,0,166,170,5,36,0,0,167,169,5,36,0,0,168,
+        167,1,0,0,0,169,172,1,0,0,0,170,168,1,0,0,0,170,171,1,0,0,0,171,
+        173,1,0,0,0,172,170,1,0,0,0,173,174,5,2,0,0,174,175,3,10,5,0,175,
+        176,5,2,0,0,176,178,1,0,0,0,177,157,1,0,0,0,177,163,1,0,0,0,178,
+        9,1,0,0,0,179,181,3,12,6,0,180,179,1,0,0,0,181,184,1,0,0,0,182,180,
+        1,0,0,0,182,183,1,0,0,0,183,11,1,0,0,0,184,182,1,0,0,0,185,207,3,
+        2,1,0,186,187,5,1,0,0,187,188,5,17,0,0,188,189,5,36,0,0,189,190,
+        3,2,1,0,190,191,5,2,0,0,191,207,1,0,0,0,192,193,5,1,0,0,193,194,
+        5,5,0,0,194,195,3,2,1,0,195,196,3,10,5,0,196,197,5,2,0,0,197,207,
+        1,0,0,0,198,199,5,1,0,0,199,200,5,5,0,0,200,201,3,2,1,0,201,202,
+        3,10,5,0,202,203,5,16,0,0,203,204,3,10,5,0,204,205,5,2,0,0,205,207,
+        1,0,0,0,206,185,1,0,0,0,206,186,1,0,0,0,206,192,1,0,0,0,206,198,
+        1,0,0,0,207,13,1,0,0,0,13,17,23,55,66,73,104,133,138,155,170,177,
+        182,206
     ]
 
 class SchemeParser ( Parser ):
@@ -94,20 +96,20 @@ class SchemeParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'('", "')'", "'#t'", "'#f'", "'if'", 
-                     "'cond'", "'let'", "'read'", "'display'", "'newline'", 
-                     "'car'", "'cdr'", "'cons'", "'null?'", "'else'", "'define'", 
-                     "'+'", "'-'", "'*'", "'/'", "'mod'", "'^'", "'!='", 
-                     "'<='", "'>='", "'<'", "'>'", "'='", "'&&'", "'||'", 
-                     "'!'" ]
+                     "'cond'", "'let'", "'read'", "'display'", "'write'", 
+                     "'newline'", "'car'", "'cdr'", "'cons'", "'null?'", 
+                     "'else'", "'define'", "'+'", "'-'", "'*'", "'/'", "'mod'", 
+                     "'^'", "'<>'", "'<='", "'>='", "'<'", "'>'", "'='", 
+                     "'and'", "'or'", "'not'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "SUM", "SUB", "PROD", "DIV", "MOD", "EXP", 
-                      "NOTEQ", "LESSEQ", "GREATEREQ", "LESS", "GREATER", 
-                      "EQ", "AND", "OR", "NOT", "LIST", "EMPTY_LIST", "STRING", 
-                      "ID", "NUM", "COMMENT", "WS" ]
+                      "<INVALID>", "<INVALID>", "SUM", "SUB", "PROD", "DIV", 
+                      "MOD", "EXP", "NOTEQ", "LESSEQ", "GREATEREQ", "LESS", 
+                      "GREATER", "EQ", "AND", "OR", "NOT", "LIST", "EMPTY_LIST", 
+                      "STRING", "ID", "NUM", "COMMENT", "WS" ]
 
     RULE_root = 0
     RULE_expr = 1
@@ -137,28 +139,29 @@ class SchemeParser ( Parser ):
     T__13=14
     T__14=15
     T__15=16
-    SUM=17
-    SUB=18
-    PROD=19
-    DIV=20
-    MOD=21
-    EXP=22
-    NOTEQ=23
-    LESSEQ=24
-    GREATEREQ=25
-    LESS=26
-    GREATER=27
-    EQ=28
-    AND=29
-    OR=30
-    NOT=31
-    LIST=32
-    EMPTY_LIST=33
-    STRING=34
-    ID=35
-    NUM=36
-    COMMENT=37
-    WS=38
+    T__16=17
+    SUM=18
+    SUB=19
+    PROD=20
+    DIV=21
+    MOD=22
+    EXP=23
+    NOTEQ=24
+    LESSEQ=25
+    GREATEREQ=26
+    LESS=27
+    GREATER=28
+    EQ=29
+    AND=30
+    OR=31
+    NOT=32
+    LIST=33
+    EMPTY_LIST=34
+    STRING=35
+    ID=36
+    NUM=37
+    COMMENT=38
+    WS=39
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -196,6 +199,14 @@ class SchemeParser ( Parser ):
         def getRuleIndex(self):
             return SchemeParser.RULE_root
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRoot" ):
+                listener.enterRoot(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRoot" ):
+                listener.exitRoot(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRoot" ):
                 return visitor.visitRoot(self)
@@ -226,7 +237,7 @@ class SchemeParser ( Parser ):
             self.state = 23
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 133143986202) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 266287972378) != 0):
                 self.state = 20
                 self.expr()
                 self.state = 25
@@ -271,6 +282,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGroupExpr" ):
+                listener.enterGroupExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGroupExpr" ):
+                listener.exitGroupExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGroupExpr" ):
                 return visitor.visitGroupExpr(self)
@@ -288,6 +307,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNullExpr" ):
+                listener.enterNullExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNullExpr" ):
+                listener.exitNullExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNullExpr" ):
                 return visitor.visitNullExpr(self)
@@ -301,6 +328,14 @@ class SchemeParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTrueExpr" ):
+                listener.enterTrueExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTrueExpr" ):
+                listener.exitTrueExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTrueExpr" ):
@@ -318,6 +353,14 @@ class SchemeParser ( Parser ):
         def LIST(self):
             return self.getToken(SchemeParser.LIST, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterListLiteralExpr" ):
+                listener.enterListLiteralExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitListLiteralExpr" ):
+                listener.exitListLiteralExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitListLiteralExpr" ):
                 return visitor.visitListLiteralExpr(self)
@@ -333,6 +376,14 @@ class SchemeParser ( Parser ):
 
         def NUM(self):
             return self.getToken(SchemeParser.NUM, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNumberExpr" ):
+                listener.enterNumberExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNumberExpr" ):
+                listener.exitNumberExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNumberExpr" ):
@@ -360,6 +411,14 @@ class SchemeParser ( Parser ):
                 return self.getTypedRuleContext(SchemeParser.ExprContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLogicalExpr" ):
+                listener.enterLogicalExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLogicalExpr" ):
+                listener.exitLogicalExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLogicalExpr" ):
                 return visitor.visitLogicalExpr(self)
@@ -380,6 +439,14 @@ class SchemeParser ( Parser ):
                 return self.getTypedRuleContext(SchemeParser.CondClauseContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCondExpr" ):
+                listener.enterCondExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCondExpr" ):
+                listener.exitCondExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCondExpr" ):
                 return visitor.visitCondExpr(self)
@@ -394,6 +461,14 @@ class SchemeParser ( Parser ):
             self.copyFrom(ctx)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReadExpr" ):
+                listener.enterReadExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReadExpr" ):
+                listener.exitReadExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitReadExpr" ):
                 return visitor.visitReadExpr(self)
@@ -407,6 +482,14 @@ class SchemeParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNewlineExpr" ):
+                listener.enterNewlineExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNewlineExpr" ):
+                listener.exitNewlineExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNewlineExpr" ):
@@ -440,6 +523,14 @@ class SchemeParser ( Parser ):
         def NOTEQ(self):
             return self.getToken(SchemeParser.NOTEQ, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterComparisonExpr" ):
+                listener.enterComparisonExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitComparisonExpr" ):
+                listener.exitComparisonExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitComparisonExpr" ):
                 return visitor.visitComparisonExpr(self)
@@ -455,6 +546,14 @@ class SchemeParser ( Parser ):
 
         def EMPTY_LIST(self):
             return self.getToken(SchemeParser.EMPTY_LIST, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEmptyListExpr" ):
+                listener.enterEmptyListExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEmptyListExpr" ):
+                listener.exitEmptyListExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEmptyListExpr" ):
@@ -482,6 +581,14 @@ class SchemeParser ( Parser ):
                 return self.getTypedRuleContext(SchemeParser.ExprContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLetExpr" ):
+                listener.enterLetExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLetExpr" ):
+                listener.exitLetExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLetExpr" ):
                 return visitor.visitLetExpr(self)
@@ -497,6 +604,14 @@ class SchemeParser ( Parser ):
 
         def STRING(self):
             return self.getToken(SchemeParser.STRING, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStringExpr" ):
+                listener.enterStringExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStringExpr" ):
+                listener.exitStringExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStringExpr" ):
@@ -514,9 +629,42 @@ class SchemeParser ( Parser ):
         def ID(self):
             return self.getToken(SchemeParser.ID, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableExpr" ):
+                listener.enterVariableExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableExpr" ):
+                listener.exitVariableExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariableExpr" ):
                 return visitor.visitVariableExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class WriteExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SchemeParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(SchemeParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWriteExpr" ):
+                listener.enterWriteExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWriteExpr" ):
+                listener.exitWriteExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitWriteExpr" ):
+                return visitor.visitWriteExpr(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -530,6 +678,14 @@ class SchemeParser ( Parser ):
         def expr(self):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCdrExpr" ):
+                listener.enterCdrExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCdrExpr" ):
+                listener.exitCdrExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCdrExpr" ):
@@ -550,6 +706,14 @@ class SchemeParser ( Parser ):
             else:
                 return self.getTypedRuleContext(SchemeParser.ExprContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConsExpr" ):
+                listener.enterConsExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConsExpr" ):
+                listener.exitConsExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConsExpr" ):
@@ -573,6 +737,14 @@ class SchemeParser ( Parser ):
                 return self.getTypedRuleContext(SchemeParser.ExprContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionCallExpr" ):
+                listener.enterFunctionCallExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionCallExpr" ):
+                listener.exitFunctionCallExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFunctionCallExpr" ):
                 return visitor.visitFunctionCallExpr(self)
@@ -592,6 +764,14 @@ class SchemeParser ( Parser ):
             else:
                 return self.getTypedRuleContext(SchemeParser.ExprContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIfExpr" ):
+                listener.enterIfExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIfExpr" ):
+                listener.exitIfExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIfExpr" ):
@@ -625,6 +805,14 @@ class SchemeParser ( Parser ):
         def EXP(self):
             return self.getToken(SchemeParser.EXP, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArithmeticExpr" ):
+                listener.enterArithmeticExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArithmeticExpr" ):
+                listener.exitArithmeticExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArithmeticExpr" ):
                 return visitor.visitArithmeticExpr(self)
@@ -638,6 +826,14 @@ class SchemeParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFalseExpr" ):
+                listener.enterFalseExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFalseExpr" ):
+                listener.exitFalseExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFalseExpr" ):
@@ -656,6 +852,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDisplayExpr" ):
+                listener.enterDisplayExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDisplayExpr" ):
+                listener.exitDisplayExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDisplayExpr" ):
                 return visitor.visitDisplayExpr(self)
@@ -673,6 +877,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCarExpr" ):
+                listener.enterCarExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCarExpr" ):
+                listener.exitCarExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCarExpr" ):
                 return visitor.visitCarExpr(self)
@@ -687,7 +899,7 @@ class SchemeParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_expr)
         self._la = 0 # Token type
         try:
-            self.state = 133
+            self.state = 138
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
             if la_ == 1:
@@ -743,7 +955,7 @@ class SchemeParser ( Parser ):
                 self.match(SchemeParser.T__0)
                 self.state = 38
                 _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 8257536) != 0)):
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 16515072) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -828,7 +1040,7 @@ class SchemeParser ( Parser ):
                     self.state = 73 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 133143986202) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 266287972378) != 0)):
                         break
 
                 self.state = 75
@@ -860,79 +1072,79 @@ class SchemeParser ( Parser ):
                 pass
 
             elif la_ == 13:
-                localctx = SchemeParser.NewlineExprContext(self, localctx)
+                localctx = SchemeParser.WriteExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 13)
                 self.state = 85
                 self.match(SchemeParser.T__0)
                 self.state = 86
                 self.match(SchemeParser.T__9)
                 self.state = 87
+                self.expr()
+                self.state = 88
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 14:
-                localctx = SchemeParser.ComparisonExprContext(self, localctx)
+                localctx = SchemeParser.NewlineExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 14)
-                self.state = 88
-                self.match(SchemeParser.T__0)
-                self.state = 89
-                _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 528482304) != 0)):
-                    self._errHandler.recoverInline(self)
-                else:
-                    self._errHandler.reportMatch(self)
-                    self.consume()
                 self.state = 90
-                self.expr()
+                self.match(SchemeParser.T__0)
                 self.state = 91
-                self.expr()
+                self.match(SchemeParser.T__10)
                 self.state = 92
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 15:
-                localctx = SchemeParser.LogicalExprContext(self, localctx)
+                localctx = SchemeParser.ComparisonExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 15)
-                self.state = 94
+                self.state = 93
                 self.match(SchemeParser.T__0)
-                self.state = 95
+                self.state = 94
                 _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 3758096384) != 0)):
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1056964608) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 97 
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                while True:
-                    self.state = 96
-                    self.expr()
-                    self.state = 99 
-                    self._errHandler.sync(self)
-                    _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 133143986202) != 0)):
-                        break
-
-                self.state = 101
+                self.state = 95
+                self.expr()
+                self.state = 96
+                self.expr()
+                self.state = 97
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 16:
-                localctx = SchemeParser.CarExprContext(self, localctx)
+                localctx = SchemeParser.LogicalExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 16)
-                self.state = 103
+                self.state = 99
                 self.match(SchemeParser.T__0)
-                self.state = 104
-                self.match(SchemeParser.T__10)
-                self.state = 105
-                self.expr()
+                self.state = 100
+                _la = self._input.LA(1)
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 7516192768) != 0)):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 102 
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while True:
+                    self.state = 101
+                    self.expr()
+                    self.state = 104 
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 266287972378) != 0)):
+                        break
+
                 self.state = 106
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 17:
-                localctx = SchemeParser.CdrExprContext(self, localctx)
+                localctx = SchemeParser.CarExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 17)
                 self.state = 108
                 self.match(SchemeParser.T__0)
@@ -945,7 +1157,7 @@ class SchemeParser ( Parser ):
                 pass
 
             elif la_ == 18:
-                localctx = SchemeParser.ConsExprContext(self, localctx)
+                localctx = SchemeParser.CdrExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 18)
                 self.state = 113
                 self.match(SchemeParser.T__0)
@@ -954,18 +1166,18 @@ class SchemeParser ( Parser ):
                 self.state = 115
                 self.expr()
                 self.state = 116
-                self.expr()
-                self.state = 117
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 19:
-                localctx = SchemeParser.NullExprContext(self, localctx)
+                localctx = SchemeParser.ConsExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 19)
-                self.state = 119
+                self.state = 118
                 self.match(SchemeParser.T__0)
-                self.state = 120
+                self.state = 119
                 self.match(SchemeParser.T__13)
+                self.state = 120
+                self.expr()
                 self.state = 121
                 self.expr()
                 self.state = 122
@@ -973,34 +1185,47 @@ class SchemeParser ( Parser ):
                 pass
 
             elif la_ == 20:
-                localctx = SchemeParser.FunctionCallExprContext(self, localctx)
+                localctx = SchemeParser.NullExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 20)
                 self.state = 124
+                self.match(SchemeParser.T__0)
+                self.state = 125
+                self.match(SchemeParser.T__14)
+                self.state = 126
+                self.expr()
+                self.state = 127
+                self.match(SchemeParser.T__1)
+                pass
+
+            elif la_ == 21:
+                localctx = SchemeParser.FunctionCallExprContext(self, localctx)
+                self.enterOuterAlt(localctx, 21)
+                self.state = 129
                 self.match(SchemeParser.ID)
-                self.state = 128
+                self.state = 133
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
-                        self.state = 125
+                        self.state = 130
                         self.expr() 
-                    self.state = 130
+                    self.state = 135
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
 
                 pass
 
-            elif la_ == 21:
+            elif la_ == 22:
                 localctx = SchemeParser.ListLiteralExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 21)
-                self.state = 131
+                self.enterOuterAlt(localctx, 22)
+                self.state = 136
                 self.match(SchemeParser.LIST)
                 pass
 
-            elif la_ == 22:
+            elif la_ == 23:
                 localctx = SchemeParser.EmptyListExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 22)
-                self.state = 132
+                self.enterOuterAlt(localctx, 23)
+                self.state = 137
                 self.match(SchemeParser.EMPTY_LIST)
                 pass
 
@@ -1043,6 +1268,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLetBindingPair" ):
+                listener.enterLetBindingPair(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLetBindingPair" ):
+                listener.exitLetBindingPair(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLetBindingPair" ):
                 return visitor.visitLetBindingPair(self)
@@ -1058,13 +1291,13 @@ class SchemeParser ( Parser ):
         try:
             localctx = SchemeParser.LetBindingPairContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
-            self.state = 135
+            self.state = 140
             self.match(SchemeParser.T__0)
-            self.state = 136
+            self.state = 141
             self.match(SchemeParser.ID)
-            self.state = 137
+            self.state = 142
             self.expr()
-            self.state = 138
+            self.state = 143
             self.match(SchemeParser.T__1)
         except RecognitionException as re:
             localctx.exception = re
@@ -1102,6 +1335,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCondElseClause" ):
+                listener.enterCondElseClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCondElseClause" ):
+                listener.exitCondElseClause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCondElseClause" ):
                 return visitor.visitCondElseClause(self)
@@ -1122,6 +1363,14 @@ class SchemeParser ( Parser ):
                 return self.getTypedRuleContext(SchemeParser.ExprContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCondClauseExpr" ):
+                listener.enterCondClauseExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCondClauseExpr" ):
+                listener.exitCondClauseExpr(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCondClauseExpr" ):
                 return visitor.visitCondClauseExpr(self)
@@ -1135,32 +1384,32 @@ class SchemeParser ( Parser ):
         localctx = SchemeParser.CondClauseContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_condClause)
         try:
-            self.state = 150
+            self.state = 155
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
                 localctx = SchemeParser.CondClauseExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 140
+                self.state = 145
                 self.match(SchemeParser.T__0)
-                self.state = 141
+                self.state = 146
                 self.expr()
-                self.state = 142
+                self.state = 147
                 self.expr()
-                self.state = 143
+                self.state = 148
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 2:
                 localctx = SchemeParser.CondElseClauseContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 145
+                self.state = 150
                 self.match(SchemeParser.T__0)
-                self.state = 146
-                self.match(SchemeParser.T__14)
-                self.state = 147
+                self.state = 151
+                self.match(SchemeParser.T__15)
+                self.state = 152
                 self.expr()
-                self.state = 148
+                self.state = 153
                 self.match(SchemeParser.T__1)
                 pass
 
@@ -1203,6 +1452,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstantDeclaration" ):
+                listener.enterConstantDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstantDeclaration" ):
+                listener.exitConstantDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstantDeclaration" ):
                 return visitor.visitConstantDeclaration(self)
@@ -1225,6 +1482,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.BlockContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionDeclaration" ):
+                listener.enterFunctionDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionDeclaration" ):
+                listener.exitFunctionDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFunctionDeclaration" ):
                 return visitor.visitFunctionDeclaration(self)
@@ -1239,50 +1504,50 @@ class SchemeParser ( Parser ):
         self.enterRule(localctx, 8, self.RULE_declaration)
         self._la = 0 # Token type
         try:
-            self.state = 172
+            self.state = 177
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
             if la_ == 1:
                 localctx = SchemeParser.ConstantDeclarationContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 152
+                self.state = 157
                 self.match(SchemeParser.T__0)
-                self.state = 153
-                self.match(SchemeParser.T__15)
-                self.state = 154
+                self.state = 158
+                self.match(SchemeParser.T__16)
+                self.state = 159
                 self.match(SchemeParser.ID)
-                self.state = 155
+                self.state = 160
                 self.expr()
-                self.state = 156
+                self.state = 161
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 2:
                 localctx = SchemeParser.FunctionDeclarationContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 158
+                self.state = 163
                 self.match(SchemeParser.T__0)
-                self.state = 159
-                self.match(SchemeParser.T__15)
-                self.state = 160
-                self.match(SchemeParser.T__0)
-                self.state = 161
-                self.match(SchemeParser.ID)
+                self.state = 164
+                self.match(SchemeParser.T__16)
                 self.state = 165
+                self.match(SchemeParser.T__0)
+                self.state = 166
+                self.match(SchemeParser.ID)
+                self.state = 170
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la==35:
-                    self.state = 162
-                    self.match(SchemeParser.ID)
+                while _la==36:
                     self.state = 167
+                    self.match(SchemeParser.ID)
+                    self.state = 172
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 168
+                self.state = 173
                 self.match(SchemeParser.T__1)
-                self.state = 169
+                self.state = 174
                 self.block()
-                self.state = 170
+                self.state = 175
                 self.match(SchemeParser.T__1)
                 pass
 
@@ -1313,6 +1578,14 @@ class SchemeParser ( Parser ):
         def getRuleIndex(self):
             return SchemeParser.RULE_block
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlock" ):
+                listener.enterBlock(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlock" ):
+                listener.exitBlock(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBlock" ):
                 return visitor.visitBlock(self)
@@ -1329,13 +1602,13 @@ class SchemeParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 177
+            self.state = 182
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 133143986202) != 0):
-                self.state = 174
-                self.stmt()
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 266287972378) != 0):
                 self.state = 179
+                self.stmt()
+                self.state = 184
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1378,6 +1651,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.BlockContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIfStmt" ):
+                listener.enterIfStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIfStmt" ):
+                listener.exitIfStmt(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIfStmt" ):
                 return visitor.visitIfStmt(self)
@@ -1401,6 +1682,14 @@ class SchemeParser ( Parser ):
                 return self.getTypedRuleContext(SchemeParser.BlockContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIfElseStmt" ):
+                listener.enterIfElseStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIfElseStmt" ):
+                listener.exitIfElseStmt(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIfElseStmt" ):
                 return visitor.visitIfElseStmt(self)
@@ -1417,6 +1706,14 @@ class SchemeParser ( Parser ):
         def expr(self):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionStmt" ):
+                listener.enterExpressionStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionStmt" ):
+                listener.exitExpressionStmt(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpressionStmt" ):
@@ -1437,6 +1734,14 @@ class SchemeParser ( Parser ):
             return self.getTypedRuleContext(SchemeParser.ExprContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssignmentStmt" ):
+                listener.enterAssignmentStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssignmentStmt" ):
+                listener.exitAssignmentStmt(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAssignmentStmt" ):
                 return visitor.visitAssignmentStmt(self)
@@ -1450,62 +1755,62 @@ class SchemeParser ( Parser ):
         localctx = SchemeParser.StmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_stmt)
         try:
-            self.state = 201
+            self.state = 206
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,12,self._ctx)
             if la_ == 1:
                 localctx = SchemeParser.ExpressionStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 180
+                self.state = 185
                 self.expr()
                 pass
 
             elif la_ == 2:
                 localctx = SchemeParser.AssignmentStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 181
+                self.state = 186
                 self.match(SchemeParser.T__0)
-                self.state = 182
-                self.match(SchemeParser.T__15)
-                self.state = 183
+                self.state = 187
+                self.match(SchemeParser.T__16)
+                self.state = 188
                 self.match(SchemeParser.ID)
-                self.state = 184
+                self.state = 189
                 self.expr()
-                self.state = 185
+                self.state = 190
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 3:
                 localctx = SchemeParser.IfStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 187
+                self.state = 192
                 self.match(SchemeParser.T__0)
-                self.state = 188
+                self.state = 193
                 self.match(SchemeParser.T__4)
-                self.state = 189
+                self.state = 194
                 self.expr()
-                self.state = 190
+                self.state = 195
                 self.block()
-                self.state = 191
+                self.state = 196
                 self.match(SchemeParser.T__1)
                 pass
 
             elif la_ == 4:
                 localctx = SchemeParser.IfElseStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 193
-                self.match(SchemeParser.T__0)
-                self.state = 194
-                self.match(SchemeParser.T__4)
-                self.state = 195
-                self.expr()
-                self.state = 196
-                self.block()
-                self.state = 197
-                self.match(SchemeParser.T__14)
                 self.state = 198
-                self.block()
+                self.match(SchemeParser.T__0)
                 self.state = 199
+                self.match(SchemeParser.T__4)
+                self.state = 200
+                self.expr()
+                self.state = 201
+                self.block()
+                self.state = 202
+                self.match(SchemeParser.T__15)
+                self.state = 203
+                self.block()
+                self.state = 204
                 self.match(SchemeParser.T__1)
                 pass
 

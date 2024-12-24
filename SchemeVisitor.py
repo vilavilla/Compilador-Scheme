@@ -74,6 +74,11 @@ class SchemeVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SchemeParser#writeExpr.
+    def visitWriteExpr(self, ctx:SchemeParser.WriteExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SchemeParser#newlineExpr.
     def visitNewlineExpr(self, ctx:SchemeParser.NewlineExprContext):
         return self.visitChildren(ctx)

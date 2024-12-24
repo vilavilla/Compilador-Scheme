@@ -18,6 +18,7 @@ expr
     | '(' 'let' '(' letBinding (letBinding)* ')' expr+ ')'   #letExpr
     | '(' 'read' ')'                           #readExpr
     | '(' 'display' expr ')'                   #displayExpr
+    | '(' 'write' expr ')'                     #writeExpr
     | '(' 'newline' ')'                        #newlineExpr
     | '(' (LESS | LESSEQ | GREATER | GREATEREQ | EQ | NOTEQ) expr expr ')' #comparisonExpr
     | '(' (AND | OR | NOT) expr+ ')'           #logicalExpr
@@ -47,7 +48,7 @@ declaration
     | '(' 'define' '(' ID ID* ')' block ')'    #functionDeclaration
     ;
 
-// Blocks
+// Blocks are made up Statements
 block
     : stmt*
     ;
@@ -67,15 +68,15 @@ PROD    : '*';
 DIV     : '/';
 MOD     : 'mod';
 EXP     : '^';
-NOTEQ   : '!=';
+NOTEQ   : '<>';
 LESSEQ  : '<=';
 GREATEREQ: '>=' ;
 LESS    : '<';
 GREATER : '>';
 EQ      : '=';
-AND     : '&&';
-OR      : '||';
-NOT     : '!';
+AND     : 'and';
+OR      : 'or';
+NOT     : 'not';
 
 // List literals
 LIST : '\'' '(' (NUM | ID | STRING) (WS (NUM | ID | STRING))* ')';

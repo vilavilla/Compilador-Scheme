@@ -1,18 +1,18 @@
 "Iniciando pruebas..."
 Prueba 1: Suma
-(add 3 4) => 0
+(add 3 4) => 7
 Prueba 2: Condicional simple
 (if (< 3 5) \"verdadero\" \"falso\") => verdadero
 Prueba 3: Condicional múltiple
 (cond ((< 5 3) \"menor\") ((= 5 5) \"igual\") (else \"ninguno\")) => igual
 Prueba 4: Let
-(let ((a 10) (b 20)) (+ a b)) => 0
+(let ((a 10) (b 20)) (+ a b)) => 30
 Prueba 5: Operadores aritméticos
-(/ 8 4) => None
+(/ 8 4) => 2
 Prueba 6: Operadores lógicos
 (and (< 3 5) (= 4 4) ) => #t
 Prueba 7: Trabajo con listas
 (car '(1 2 3)) => 1
 Prueba 8: Factorial recursivo
-(factorial 5) => 0
+(factorial 5) => 120
 Pruebas finalizadas.
