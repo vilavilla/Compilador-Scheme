@@ -1,8 +1,10 @@
 # Intérprete Scheme
 
-**Scheme** es un lenguaje de programación FUNCIONAL basado en expresiones y funciones. Este proyecto implementa un **intérprete de Scheme** que permite al usuario evaluar programas sencillos, con soporte para un conjunto amplio de características y funcionalidades. El intérprete está diseñado para manejar programas de cálculo funcional y estructurado, brinda herramientas para definir funciones, manejar estructuras condicionales, operar con listas y cadenas, y trabajar con expresiones lógicas y aritméticas.
+**Scheme** es un lenguaje de programación FUNCIONAL. Este proyecto implementa un **intérprete de Scheme** que permite al usuario evaluar programas sencillos.
 
-El intérprete también soporta **funciones de orden superior** y permite realizar cálculos avanzados sin preocuparse de detalles como la gestión de memoria, ya que al apoyarse en Python, este interprete hereda su gestión automática de memoria. Además, incluye un sistema básico de manejo de errores para prevenir problemas comunes, como divisiones por cero o llamadas a funciones no definidas.
+El intérprete contiene un soporte para un conjunto amplio de características y funcionalidades. Está diseñado para manejar programas de cálculo funcional y estructurado, también brinda de herramientas para definir funciones, manejar estructuras condicionales, operar con listas y cadenas, y trabajar con expresiones lógicas y aritméticas.
+
+También soporta **funciones de orden superior** ,además de permitir cálculos avanzados sin preocuparse de detalles como la gestión de memoria, ya que al apoyarse en Python, este intérprete hereda su gestión automática de memoria. Y como cualquier intérprete incluye un sistema básico de manejo de errores de codigo para prevenir problemas comunes.
 
 ---
 
@@ -12,18 +14,18 @@ El intérprete también soporta **funciones de orden superior** y permite realiz
 
 En este intérprete de Scheme, se manejan los siguientes tipos de datos:
 
-- **Números enteros**: Representan la base de las operaciones matemáticas.
-- **Booleanos**: Los valores `#t` (true) y `#f` (false) representan el resultado de evaluaciones lógicas.
-- **Cadenas de texto**: Utilizadas para mostrar mensajes o realizar concatenaciones.
-- **Listas**: Representadas con el formato `'(<elementos>)` o listas vacías `'()`.
+- **Números enteros**: Básicamente representan la base de las operaciones matemáticas.
+- **Booleanos**: En este caso los valores `#t` (true) y `#f` (false) representan el resultado de evaluaciones lógicas.
+- **Cadenas de texto**: Son utilizadas para mostrar mensajes o realizar concatenaciones.
+- **Listas**: Las cuales se representan con el formato `'(<elementos>)` o listas vacías `'()`.
 
-El intérprete **gestiona variables y funciones locales**, limitando a su alcance al ámbito en el que son definidas. Esta parte también incluye un sistema básico de excepciones para manejar errores de ejecución y programación.
+Además el intérprete **gestiona variables y funciones locales**, el cual limita a su alcance al ámbito en el que son definidas. Esta parte también incluye un sistema básico de excepciones para manejar errores de ejecución y programación.
 
 ---
 
 ### Instrucciones y Operaciones
 
-El interprete permite que lenguaje implemente las siguientes construcciones y operadores:
+El interprete permite que el usuario implemente las siguientes construcciones y operadores:
 
 #### Condicionales
 Scheme permite trabajar con estructuras condicionales simples y avanzadas:
@@ -54,7 +56,7 @@ Ejemplo:
 ```
 
 #### Manejo de listas
-El intérprete incluye estas operaciones básicas y avanzadas sobre listas, las cuales se crean utilizando el formato `'(<elementos>)` o como listas vacías `'()`:
+El intérprete incluye estas operaciones básicas y avanzadas sobre listas:
 
 - `car`: Devuelve el primer elemento de la lista.
 - `cdr`: Devuelve la lista sin el primer elemento.
@@ -72,6 +74,27 @@ Ejemplo:
 (display (cons 1 '(2 3))) ; (1 2 3)
 ```
 
+#### **Let: Declaración de variables locales**
+
+El **`let`** permite definir variables locales dentro de un bloque específico, es útil para cálculos temporales sin afectar otras partes del programa.
+
+**Sintaxis:**
+```scheme
+(let ((var1 val1) (var2 val2) ...)
+  <expr1>
+  <expr2>
+  ...)
+```
+
+**Ejemplo**:
+```scheme
+(let ((a 10) (b 20))
+  (display "La suma de a y b es: ")
+  (display (+ a b)); La suma de a y b es: 30
+  (newline))
+```
+
+
 #### Manejo de cadenas
 He añadido funciones para manipular cadenas de texto:
 - `string-append`: Concatena múltiples cadenas.
@@ -86,7 +109,9 @@ Ejemplo:
 ```
 
 #### Funciones
-El núcleo de Scheme son las funciones, que permiten definir cálculos reutilizables. Las funciones son **implícitamente tipadas**, y soportan recursión, ámbito local y funciones como parámetros. Además, el intérprete admite **funciones de orden superior**, lo que significa que las funciones pueden ser pasadas como argumentos a otras funciones, retornadas como valores, o almacenadas en variables.
+El núcleo de Scheme son las funciones, que permiten definir cálculos reutilizables. Estas funciones son **implícitamente tipadas**, y soportan recursión, ámbito local y funciones como parámetros. 
+
+Además, el intérprete admite **funciones de orden superior**, lo que significa que las funciones pueden ser pasadas como argumentos a otras funciones, retornadas como valores, o almacenadas en variables.
 
 Ejemplo de función recursiva:
 ```scheme
@@ -114,16 +139,16 @@ Ejemplo de función de orden superior:
 ### Componentes Principales
 
 1. **`Scheme.g4`**
-   - Define la gramática del lenguaje en ANTLR4.
-   - Incluye soporte para expresiones aritméticas, listas, cadenas, funciones y estructuras condicionales.
+   - Se define la gramática del lenguaje en ANTLR4.
+   - Se incluye soporte para expresiones aritméticas, listas, cadenas, funciones y estructuras condicionales.
 
 2. **`EvalVisitor.py`**
-   - Implementa la evaluación del árbol sintáctico abstracto (AST) generado por ANTLR4.
+   - Una clase que implementa la evaluación del árbol sintáctico abstracto (AST) generado por ANTLR4.
    - Maneja tablas de funciones y variables para gestionar los ámbitos.
-   - Soporta el manejo de errores, evaluaciones condicionales, recursión y operaciones avanzadas.
+   - Se soporta el manejo de errores, evaluaciones condicionales, recursión y operaciones avanzadas.
 
 3. **`Scheme.py`**
-   - Punto de entrada principal para ejecutar programas en Scheme.
+   - Es el punto de entrada principal para ejecutar programas en Scheme.
    - Llama al `EvalVisitor` para evaluar el AST generado.
 
 4. **`Makefile`**
@@ -301,6 +326,6 @@ Prueba errores3.scm completada correctament
 
 ## Agradecimientos
 
-Este proyecto ha sido desarrolladada como una práctica educativa, bastante interesentante para comprender como funcionan los compiladores. Agradezco a las herramientas como **ANTLR4** y **Python** por permitirnos implementar un lenguaje funcional con relativa facilidad. Y todos los materiales de clase que me han facilitado el desarrollo del interprete.
+Este proyecto ha sido desarrolladada como una práctica educativa, bastante interesentante, para comprender como funcionan los compiladores. También agradezco a las herramientas como **ANTLR4** y **Python** por permitirme implementar un lenguaje funcional con relativa facilidad. Y a todos los materiales de clase que me han facilitado el desarrollo del interprete.
 
 **¡Espero que este intérprete sea útil y sirva como base para futuros proyectos en Scheme!**

@@ -5,10 +5,12 @@ build: antlr
 	python3 -m pip install antlr4-python3-runtime
 
 aux:
-	java -jar antlr-4.13.2-complete.jar -Dlanguage=Python3 -visitor -no-listener Scheme.g4
+	java -jar aux/antlr-4.13.2-complete.jar -Dlanguage=Python3 -visitor -no-listener Scheme.g4
 
 test: antlr
 	@echo "Ejecutando test..."
+	
+	@echo ""
 	@echo "Test simples..."
 	@echo ""
 	
@@ -71,6 +73,7 @@ test: antlr
 
 	@python3 Scheme.py Juegos-prueba/errores8.scm > Juegos-prueba/errores8_test.out
 	@diff -q Juegos-prueba/errores8_test.out Juegos-prueba/errores8.out && echo "Prueba errores8.scm completada correctamente" || echo "Error en prueba: errores8.scm"
-
+	
+	@echo ""
 	@echo "Pruebas completadas."
 
