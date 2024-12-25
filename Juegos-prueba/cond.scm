@@ -4,5 +4,5 @@
     ((= (mod x 2) 1) "impar")
     (#t "desconocido")))
 
-(display (parimpar 7))
+(display (parimpar 7)); Esperado: impar
 (newline)

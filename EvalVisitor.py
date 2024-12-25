@@ -233,9 +233,20 @@ class EvalVisitor(SchemeVisitor):
     def visitReadExpr(self, ctx):
         try:
             value = sys.stdin.readline().strip()
-            return int(value)
-        except ValueError:
-            raise Exception("Error: Invalid input for 'read'.")
+            # Verificar si el valor es un booleano válido
+            if value.lower() in ['#t', 'true']:
+                return True
+            elif value.lower() in ['#f', 'false']:
+                return False
+            # Verificar si el valor es un entero válido
+            elif value.lstrip('-').isdigit():
+                return int(value)
+            else:
+                raise ValueError("Entrada invalida: solo se aceptan enteros y booleanos.")
+        except Exception as e:
+            raise Exception(f"Error en 'read': {e}")
+
+
 
     def visitNewlineExpr(self, ctx):
         print()

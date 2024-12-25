@@ -1,8 +1,8 @@
 # Intérprete Scheme
 
-**Scheme** es un lenguaje de programación funcional basado en expresiones y funciones. Este proyecto implementa un **intérprete de Scheme** que permite al usuario evaluar programas de manera sencilla, con soporte para un conjunto amplio de características y funcionalidades. Está diseñado para manejar programas de cálculo funcional y estructurado, brindando herramientas para definir funciones, manejar estructuras condicionales, operar con listas y cadenas, y trabajar con expresiones lógicas y aritméticas.
+**Scheme** es un lenguaje de programación FUNCIONAL basado en expresiones y funciones. Este proyecto implementa un **intérprete de Scheme** que permite al usuario evaluar programas sencillos, con soporte para un conjunto amplio de características y funcionalidades. El intérprete está diseñado para manejar programas de cálculo funcional y estructurado, brinda herramientas para definir funciones, manejar estructuras condicionales, operar con listas y cadenas, y trabajar con expresiones lógicas y aritméticas.
 
-El intérprete también soporta **funciones de orden superior** y permite realizar cálculos avanzados sin preocuparse de detalles como la gestión de memoria. Además, incluye un sistema básico de manejo de errores para prevenir problemas comunes, como divisiones por cero o llamadas a funciones no definidas.
+El intérprete también soporta **funciones de orden superior** y permite realizar cálculos avanzados sin preocuparse de detalles como la gestión de memoria, ya que al apoyarse en Python, este interprete hereda su gestión automática de memoria. Además, incluye un sistema básico de manejo de errores para prevenir problemas comunes, como divisiones por cero o llamadas a funciones no definidas.
 
 ---
 
@@ -17,13 +17,13 @@ En este intérprete de Scheme, se manejan los siguientes tipos de datos:
 - **Cadenas de texto**: Utilizadas para mostrar mensajes o realizar concatenaciones.
 - **Listas**: Representadas con el formato `'(<elementos>)` o listas vacías `'()`.
 
-El intérprete **gestiona variables y funciones locales**, limitando su alcance al ámbito en el que son definidas. También incluye un sistema básico de excepciones para manejar errores de ejecución y programación.
+El intérprete **gestiona variables y funciones locales**, limitando a su alcance al ámbito en el que son definidas. Esta parte también incluye un sistema básico de excepciones para manejar errores de ejecución y programación.
 
 ---
 
 ### Instrucciones y Operaciones
 
-El lenguaje implementa las siguientes construcciones y operadores:
+El interprete permite que lenguaje implemente las siguientes construcciones y operadores:
 
 #### Condicionales
 Scheme permite trabajar con estructuras condicionales simples y avanzadas:
@@ -41,11 +41,8 @@ Scheme permite trabajar con estructuras condicionales simples y avanzadas:
     (else <resultado_por_defecto>))
   ```
 
-#### Bucles
-Scheme en su diseño original no incluye bucles iterativos explícitos, pero estos se pueden simular mediante recursión y funciones.
-
 #### Operadores
-El intérprete soporta:
+El intérprete soporta los operadores:
 - **Operadores aritméticos**: `+`, `-`, `*`, `/`, `mod`, `^` (exponenciación).
 - **Operadores de comparación**: `<`, `<=`, `>`, `>=`, `=`, `<>`.
 - **Operadores lógicos**: `and`, `or`, `not`.
@@ -57,8 +54,9 @@ Ejemplo:
 ```
 
 #### Manejo de listas
-El intérprete incluye operaciones básicas y avanzadas sobre listas:
-- `car`: Devuelve el primer elemento.
+El intérprete incluye estas operaciones básicas y avanzadas sobre listas, las cuales se crean utilizando el formato `'(<elementos>)` o como listas vacías `'()`:
+
+- `car`: Devuelve el primer elemento de la lista.
 - `cdr`: Devuelve la lista sin el primer elemento.
 - `cons`: Construye una nueva lista añadiendo un elemento al inicio.
 - `null?`: Verifica si una lista está vacía.
@@ -70,10 +68,12 @@ Ejemplo:
 ```scheme
 (display (length '(1 2 3))) ; 3
 (display (append '(1 2) '(3 4))) ; (1 2 3 4)
+(display (null? '())) ; #t
+(display (cons 1 '(2 3))) ; (1 2 3)
 ```
 
 #### Manejo de cadenas
-Se añaden funciones para manipular cadenas de texto:
+He añadido funciones para manipular cadenas de texto:
 - `string-append`: Concatena múltiples cadenas.
 - `string-length`: Retorna la longitud de una cadena.
 - `string=?`: Verifica si dos cadenas son iguales.
@@ -86,9 +86,9 @@ Ejemplo:
 ```
 
 #### Funciones
-El núcleo del lenguaje son las funciones, que permiten definir cálculos reutilizables. Las funciones son **implicítamente tipadas**, y soportan recursión, ámbito local y funciones como parámetros.
+El núcleo de Scheme son las funciones, que permiten definir cálculos reutilizables. Las funciones son **implícitamente tipadas**, y soportan recursión, ámbito local y funciones como parámetros. Además, el intérprete admite **funciones de orden superior**, lo que significa que las funciones pueden ser pasadas como argumentos a otras funciones, retornadas como valores, o almacenadas en variables.
 
-Ejemplo:
+Ejemplo de función recursiva:
 ```scheme
 (define (factorial n)
   (if (= n 0) 1 (* n (factorial (- n 1)))))
@@ -96,6 +96,17 @@ Ejemplo:
 (display (factorial 5)) ; 120
 ```
 
+Ejemplo de función de orden superior:
+```scheme
+(define (map func lst)
+  (if (null? lst)
+      '()
+      (cons (func (car lst)) (map func (cdr lst)))))
+
+(define (doblar x) (* x 2))
+
+(display (map doblar '(1 2 3 4))) ; (2 4 6 8)
+```
 ---
 
 ## Implementación
@@ -125,11 +136,15 @@ Ejemplo:
 ### Configuración
 1. Generar los archivos de ANTLR4:
    ```bash
-   make aux
+   make 
    ```
-2. Construir el proyecto:
+2. Construir el proyecto (En caso de necesitarlo):
    ```bash
    make build
+   ```
+3. Generar los archivos de ANTLR4 con archivo (He añadido esta función ya que ANTLR4 dejó de funcionar, en caso auxiliar):
+   ```bash
+   make aux
    ```
 
 ### Ejecución
@@ -139,33 +154,134 @@ python3 Scheme.py programa.scm
 ```
 
 ### Pruebas
-Correr todas las pruebas predefinidas:
-```bash
-make test
+
+El comando `make test` ejecuta un conjunto de juego de pruebas que verifican el funcionamiento del intérprete. Estas pruebas están organizadas en tres partes principales:
+
+---
+
+#### **1. Pruebas Sencillas**
+
+Estas pruebas evalúan las características más básicas del lenguaje como entrada/salida, cálculos aritméticos simples, condicionales y definiciones sencillas de funciones.
+
+**Ejemplo 1**: Entrada de datos y suma
+```scheme
+(display "Ingrese dos números: ")
+(newline)
+(let ((x (read)) (y (read)))
+  (display "La suma es: ")
+  (display (+ x y))
+  (newline))
+```
+**Salida esperada**:
+```plaintext
+Ingrese dos números: 
+La suma es: <resultado_de_la_suma>
+```
+
+**Ejemplo 2**: Función condicional básica
+```scheme
+(define (parimpar x)
+  (cond
+    ((= (mod x 2) 0) "par")
+    ((= (mod x 2) 1) "impar")
+    (#t "desconocido")))
+
+(display (parimpar 7)) ; Esperado: impar
+(newline)
 ```
 
 ---
 
-## Ejemplos de Uso
+#### **2. Pruebas Complejas**
 
-**Ejemplo 1**: Operaciones aritméticas
+Estas pruebas abarcan características avanzadas como ejemlos de recursión, funciones de orden superior (`map`, `filter`), manejo de listas y condicionales complejos.
+
+**Ejemplo 1**: Factorial recursivo
 ```scheme
-(display (+ 3 7)) ; 10
-(display (* 4 5)) ; 20
+(define (factorial n)
+  (if (= n 0) 1
+      (* n (factorial (- n 1)))))
+
+(define (fibonacci n)
+  (if (<= n 1) n
+      (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+
+(define (suma lista)
+  (if (null? lista) 0
+      (+ (car lista) (suma (cdr lista)))))
+
+(display (factorial 5)) ; Esperado: 120
+(newline)
+
+(display (fibonacci 10)) ; Esperado: 55
+(newline)
+
+(display (suma '(1 2 3 4 5))) ; Esperado: 15
+(newline)
+
+```
+---
+
+#### **3. Pruebas de Errores**
+
+Estas pruebas están diseñadas para verificar que el intérprete muestre correctamente los errores y muestre mensajes adecuados cuando se encuentran las situaciones no válidas que hemos implementado.
+
+**Ejemplo 1**: Uso incorrecto de `null?`
+```scheme
+(display (null? 42)) ; Error esperado: 'null?' solo se puede usar con listas, recibido: 42
+(newline)
 ```
 
-**Ejemplo 2**: Manejo de listas
+**Ejemplo 2**: Llamada a una función con argumentos incorrectos
 ```scheme
-(display (length '(1 2 3))) ; 3
-(display (append '(1) '(2 3))) ; (1 2 3)
+(display (factorial)) ; Error esperado: Número incorrecto de argumentos para 'factorial'.
+(newline)
 ```
 
-**Ejemplo 3**: Definición y uso de funciones
+**Ejemplo 3**: Uso de una variable no definida
 ```scheme
-(define (suma x y) (+ x y))
-(display (suma 4 5)) ; 9
+(display x) ; Error esperado: Variable o función 'x' no definida.
+(newline)
+```
+---
+
+### Cómo funciona el comando `make test`
+
+1. **Ejecución de pruebas**:
+   - Cada programa de prueba se ejecuta utilizando el intérprete (`Scheme.py`) y si es necesario con su archivo de entrada.
+   - Las salidas generadas se comparan con los archivos de salida esperada utilizando el comando `diff`.
+
+2. **Verificación de resultados**:
+   - Si las salidas coinciden con las esperadas, la prueba se marca como correcta.
+   - Si hay discrepancias, se informa del error y el archivo el cual es diferente.
+
+---
+
+### Ejecución del comando
+
+Para correr las pruebas:
+```bash
+make test
 ```
 
+**Salida esperada en consola**:
+```plaintext
+Ejecutando test...
+Test simples...
+Prueba suma.scm completada correctamente
+Prueba cond.scm completada correctamente
+....
+
+Test complejos...
+Prueba factorial.scm completada correctamente
+...
+
+Test errores...
+Prueba errores1.scm completada correctamente
+Prueba errores2.scm completada correctamente
+Prueba errores3.scm completada correctament
+...
+```
 ---
 
 ## Mejoras Realizadas y Futuras
@@ -179,12 +295,12 @@ make test
 3. **Futuras extensiones**:
    - Soporte para expresiones lambda (`(lambda (x) <expr>)`).
    - Sistema de tipos avanzado para detectar errores antes de la evaluación.
-   - Soporte para macros y construcciones como `case`.
+   - Soporte para macros.
 
 ---
 
 ## Agradecimientos
 
-Este proyecto fue desarrollado como una práctica educativa. Agradecemos a las herramientas como **ANTLR4** y **Python** por permitirnos implementar un lenguaje funcional con relativa facilidad. También queremos reconocer a los desarrolladores que contribuyeron con ideas para extender el diseño del intérprete.
+Este proyecto ha sido desarrolladada como una práctica educativa, bastante interesentante para comprender como funcionan los compiladores. Agradezco a las herramientas como **ANTLR4** y **Python** por permitirnos implementar un lenguaje funcional con relativa facilidad. Y todos los materiales de clase que me han facilitado el desarrollo del interprete.
 
-**¡Esperamos que este intérprete sea útil y sirva como base para futuros proyectos en Scheme!**
+**¡Espero que este intérprete sea útil y sirva como base para futuros proyectos en Scheme!**
