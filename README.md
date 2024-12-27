@@ -2,9 +2,9 @@
 
 **Scheme** es un lenguaje de programación FUNCIONAL. Este proyecto implementa un **intérprete de Scheme** que permite al usuario evaluar programas sencillos.
 
-El intérprete contiene un soporte para un conjunto amplio de características y funcionalidades. Está diseñado para manejar programas de cálculo funcional y estructurado, también brinda de herramientas para definir funciones, manejar estructuras condicionales, operar con listas y cadenas, y trabajar con expresiones lógicas y aritméticas.
+El intérprete contiene un soporte para un conjunto amplio de características y funcionalidades. Está diseñado para manejar programas de cálculo funcional y estructurado, también aporta herramientas para definir funciones, manejar estructuras condicionales, operar con listas y cadenas, y trabajar con expresiones lógicas y aritméticas.
 
-También soporta **funciones de orden superior** ,además de permitir cálculos avanzados sin preocuparse de detalles como la gestión de memoria, ya que al apoyarse en Python, este intérprete hereda su gestión automática de memoria. Y como cualquier intérprete incluye un sistema básico de manejo de errores de codigo para prevenir problemas comunes.
+También soporta **funciones de orden superior** ,además de permitir cálculos avanzados sin preocuparse de detalles como la gestión de memoria, ya que al apoyarse en Python, este intérprete hereda su gestión automática de memoria. Y como cualquier intérprete incluye un sistema básico de manejo de errores de código para prevenir problemas comunes.
 
 ---
 
@@ -109,7 +109,7 @@ Ejemplo:
 ```
 
 #### Funciones
-El núcleo de Scheme son las funciones, que permiten definir cálculos reutilizables. Estas funciones son **implícitamente tipadas**, y soportan recursión, ámbito local y funciones como parámetros. 
+El núcleo de Scheme son las funciones, que permiten definir cálculos reutilizables. Estas funciones son **implícitamente tipadas**, esto significa que no necesitas declarar el tipo de una función o una variable explícitamente, ya que el lenguaje es dinámicamente tipado. 
 
 Además, el intérprete admite **funciones de orden superior**, lo que significa que las funciones pueden ser pasadas como argumentos a otras funciones, retornadas como valores, o almacenadas en variables.
 
@@ -324,8 +324,8 @@ Prueba errores3.scm completada correctament
 
 ---
 
-## Agradecimientos
+### Conclusión
 
-Este proyecto ha sido desarrolladada como una práctica educativa, bastante interesentante, para comprender como funcionan los compiladores. También agradezco a las herramientas como **ANTLR4** y **Python** por permitirme implementar un lenguaje funcional con relativa facilidad. Y a todos los materiales de clase que me han facilitado el desarrollo del interprete.
+Este proyecto ha resultado ser una práctica muy interesante para entender más en profundidad cómo funcionan los compiladores y los intérpretes. En esste proyecto al trabajar con herramientas como **ANTLR4** y **Python** me ha facilitado implementar un lenguaje funcional sea más sencillo de lo que esperaba. Ha resultado ser una buena oportunidad para aplicar lo que he aprendido en clase y conectar la teoría con algo más práctico.
 
-**¡Espero que este intérprete sea útil y sirva como base para futuros proyectos en Scheme!**
+Además, los materiales de clase me han sido de gran ayuda para desarrollar el intérprete. En general, ha sido una experiencia bastante educativa y me ha permitido ver de cerca lo complejo y a la vez fascinante que puede ser crear un lenguaje de programación desde cero.
