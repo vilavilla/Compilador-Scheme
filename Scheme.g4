@@ -91,7 +91,7 @@ EMPTY_LIST : '\'' '()';
 STRING : '"' (~["\\] | '\\' .)* '"';
 
 // Identifiers and numbers
-ID  : [a-zA-Z][a-zA-Z0-9_-]*;
+ID  : [a-zA-Z][a-zA-Z0-9?-]*;
 NUM : [0-9]+;
 
 // Comments and whitespace

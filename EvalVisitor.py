@@ -164,7 +164,7 @@ class EvalVisitor(SchemeVisitor):
     # ---------------------------
     def validate_identifier(self, identifier):
         import re
-        pattern = r"^[a-zA-Z][a-zA-Z0-9-]*$"
+        pattern = r"^[a-zA-Z][a-zA-Z0-9?-]*;*$"
         if not re.match(pattern, identifier):
             print(f"ERROR: Identificador invalido '{identifier}'. "
                   f"Un identificador debe comenzar con letra y solo puede contener letras, numeros y guiones ('-').")
