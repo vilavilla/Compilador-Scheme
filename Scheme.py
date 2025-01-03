@@ -1,11 +1,13 @@
+import sys
+
 from antlr4 import *
 from SchemeLexer import SchemeLexer
 from SchemeParser import SchemeParser
-from EvalVisitor import EvalVisitor, FunctionTable, SymbolTable
-import sys
+from EvalVisitor import EvalVisitor, Function_Table, Symbol_Table
+
 
 # Lista global para almacenar resultados
-results = []
+Results = []
 
 # Procesar la entrada Scheme
 def processInput(input_text):
@@ -24,29 +26,29 @@ def processInput(input_text):
         result = visitor.visit(tree)
 
         # Si existe la funcion 'main', ejecutarla
-        if 'main' in FunctionTable:
-            main_params, main_block = FunctionTable['main']
-            SymbolTable.append({})  # Introducimos un nuevo scope vacio
+        if 'main' in Function_Table:
+            main_params, main_block = Function_Table['main']
+            Symbol_Table.append({})  # Introducimos un nuevo scope vacio
             result = visitor.visit(main_block)  # Ejecutar el bloque principal
-            SymbolTable.pop()       # Limpiamos el scope local
+            Symbol_Table.pop()       # Limpiamos el scope local
 
         # Manejo de resultados
         if isinstance(result, int):
-            if len(results) > 8:
-                results.pop(0)
+            if len(Results) > 8:
+                Results.pop(0)
         elif isinstance(result, list):
-            # Si es una lista, se almacena directamente en results
-            results.append(str(result))
-            if len(results) > 8:
-                results.pop(0)
+            # Si es una lista, se almacena directamente en Results
+            Results.append(str(result))
+            if len(Results) > 8:
+                Results.pop(0)
 
     except Exception as e:
         # Manejo de errores
-        results.append(f"{str(e)}")
-        if len(results) > 8:
-            results.pop(0)
+        Results.append(f"{str(e)}")
+        if len(Results) > 8:
+            Results.pop(0)
 
-    return results
+    return Results
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:

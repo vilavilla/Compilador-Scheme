@@ -1,15 +1,18 @@
+import sys
+import re
+
 from SchemeParser import SchemeParser
 from SchemeVisitor import SchemeVisitor
 from antlr4.tree.Tree import TerminalNodeImpl
 
-import sys
+
 
 # Tablas globales
-FunctionTable = {}   # Almacena las funciones (nombre y parametros)
-SymbolTable = [{}]   # Pila de scopes de variables
+Function_Table = {}   # Almacena las funciones (nombre y parametros)
+Symbol_Table = [{}]   # Pila de scopes de variables
 
 # Diccionarios de operaciones
-ArithmeticDicc = {
+Arithmetic_Dicc = {
     '+': lambda x, y: x + y, 
     '-': lambda x, y: x - y, 
     '*': lambda x, y: x * y, 
@@ -18,7 +21,7 @@ ArithmeticDicc = {
     '^': lambda x, y: x ** y
 }
 
-LogicDicc = {
+Logic_Dicc = {
     '<':  lambda a, b: a < b, 
     '<=': lambda a, b: a <= b, 
     '>':  lambda a, b: a > b, 
@@ -56,7 +59,7 @@ class EvalVisitor(SchemeVisitor):
         operator = ctx.getChild(1).getText()
         left = self.visit(ctx.getChild(2))
         right = self.visit(ctx.getChild(3))
-        return ArithmeticDicc[operator](left, right)
+        return Arithmetic_Dicc[operator](left, right)
 
     # ---------------------------
     #   Expresiones Logicas
@@ -71,18 +74,18 @@ class EvalVisitor(SchemeVisitor):
         if not args:
             raise Exception(f"Error: Ninguna condicion valida para el operador logico '{operator}'.")
 
-        if operator not in LogicDicc:
+        if operator not in Logic_Dicc:
             raise Exception(f"Error: Operador logico '{operator}' no definido.")
 
         if operator == 'not':
             if len(args) != 1:
                 raise Exception(f"Error: El operador 'not' espera un unico argumento, pero recibio {len(args)}.")
-            return '#t' if LogicDicc[operator](args[0]) else '#f'
+            return '#t' if Logic_Dicc[operator](args[0]) else '#f'
 
         if operator in ['and', 'or']:
             if len(args) != 2:
                 raise Exception(f"Error: El operador '{operator}' espera exactamente dos argumentos, pero recibio {len(args)}.")
-            return '#t' if LogicDicc[operator](args[0], args[1]) else '#f'
+            return '#t' if Logic_Dicc[operator](args[0], args[1]) else '#f'
 
         raise Exception(f"Error: Operador logico '{operator}' no soportado.")
 
@@ -134,10 +137,10 @@ class EvalVisitor(SchemeVisitor):
     def visitConstantDeclaration(self, ctx):
         constant_name = ctx.ID().getText()
         # Verificamos si la constante ya existe
-        if any(constant_name in scope for scope in SymbolTable):
+        if any(constant_name in scope for scope in Symbol_Table):
             raise Exception(f"Error: La constante '{constant_name}' ya esta definida.")
         value = self.visit(ctx.expr())
-        SymbolTable[0][constant_name] = value
+        Symbol_Table[0][constant_name] = value
         return constant_name
     
 
@@ -145,7 +148,7 @@ class EvalVisitor(SchemeVisitor):
         function_name = ctx.ID(0).getText()
         params = [param.getText() for param in ctx.ID()[1:]]
         block = ctx.block()
-        FunctionTable[function_name] = (params, block)
+        Function_Table[function_name] = (params, block)
         return function_name
 
     # ---------------------------
@@ -163,7 +166,6 @@ class EvalVisitor(SchemeVisitor):
     #   Expresiones de Variables
     # ---------------------------
     def validate_identifier(self, identifier):
-        import re
         pattern = r"^[a-zA-Z][a-zA-Z0-9?-]*;*$"
         if not re.match(pattern, identifier):
             print(f"ERROR: Identificador invalido '{identifier}'. "
@@ -175,13 +177,13 @@ class EvalVisitor(SchemeVisitor):
         var_name = ctx.getText()
         self.validate_identifier(var_name)
 
-        # Buscar en SymbolTable (ultimo scope primero)
-        for scope in reversed(SymbolTable):
+        # Buscar en Symbol_Table (ultimo scope primero)
+        for scope in reversed(Symbol_Table):
             if var_name in scope:
                 return scope[var_name]
 
-        # Si no esta en SymbolTable, buscar en FunctionTable
-        if var_name in FunctionTable:
+        # Si no esta en Symbol_Table, buscar en Function_Table
+        if var_name in Function_Table:
             # Retorna el nombre como referencia de la funcion
             return var_name
 
@@ -197,13 +199,13 @@ class EvalVisitor(SchemeVisitor):
             value = self.visit(binding.expr())
             local_scope[var_name] = value
 
-        SymbolTable.append(local_scope)
+        Symbol_Table.append(local_scope)
         result = 0
         for expr in ctx.expr():
             temp = self.visit(expr)
             if temp is not None:
                 result = temp
-        SymbolTable.pop()
+        Symbol_Table.pop()
         return result
 
     # ---------------------------
@@ -267,7 +269,7 @@ class EvalVisitor(SchemeVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         operator = ctx.getChild(1).getText()
-        return LogicDicc[operator](left, right)
+        return Logic_Dicc[operator](left, right)
 
     def visitGroupExpr(self, ctx):
         return self.visit(ctx.expr())
@@ -362,22 +364,22 @@ class EvalVisitor(SchemeVisitor):
         self.validate_identifier(func_name)
 
         # Revisar si la funcion esta como simbolo en algun scope
-        for scope in reversed(SymbolTable):
+        for scope in reversed(Symbol_Table):
             if func_name in scope:
                 func_name = scope[func_name]
                 break
 
-        if func_name not in FunctionTable:
+        if func_name not in Function_Table:
             raise Exception(f"Error: Funcion '{func_name}' no definida.")
 
-        params, block = FunctionTable[func_name]
+        params, block = Function_Table[func_name]
         args = [self.visit(arg) for arg in ctx.expr()]
 
         if len(args) != len(params):
             raise Exception(f"Error: La funcion '{func_name}' esperaba {len(params)} argumentos, pero recibio {len(args)}.")
 
         local_scope = dict(zip(params, args))
-        SymbolTable.append(local_scope)
+        Symbol_Table.append(local_scope)
         result = self.visit(block)
-        SymbolTable.pop()
+        Symbol_Table.pop()
         return result
